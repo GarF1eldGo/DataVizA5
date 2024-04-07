@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="Exercise frequency <= 0.5\nsquared_error = 0.792\nsamples = 329\nvalue = 7.474"] ;
+1 [label="Caffeine consumption <= 12.5\nsquared_error = 0.885\nsamples = 95\nvalue = 7.653"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Smoking status <= 0.5\nsquared_error = 0.734\nsamples = 47\nvalue = 7.426"] ;
+1 -> 2 ;
+3 [label="squared_error = 0.851\nsamples = 39\nvalue = 7.462"] ;
+2 -> 3 ;
+4 [label="squared_error = 0.125\nsamples = 8\nvalue = 7.25"] ;
+2 -> 4 ;
+5 [label="Caffeine consumption <= 37.5\nsquared_error = 0.932\nsamples = 48\nvalue = 7.875"] ;
+1 -> 5 ;
+6 [label="squared_error = 1.117\nsamples = 32\nvalue = 7.984"] ;
+5 -> 6 ;
+7 [label="squared_error = 0.491\nsamples = 16\nvalue = 7.656"] ;
+5 -> 7 ;
+8 [label="Alcohol consumption <= 4.5\nsquared_error = 0.736\nsamples = 234\nvalue = 7.402"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="Alcohol consumption <= 2.5\nsquared_error = 0.721\nsamples = 219\nvalue = 7.434"] ;
+8 -> 9 ;
+10 [label="squared_error = 0.734\nsamples = 182\nvalue = 7.396"] ;
+9 -> 10 ;
+11 [label="squared_error = 0.614\nsamples = 37\nvalue = 7.622"] ;
+9 -> 11 ;
+12 [label="Exercise frequency <= 2.5\nsquared_error = 0.729\nsamples = 15\nvalue = 6.933"] ;
+8 -> 12 ;
+13 [label="squared_error = 0.25\nsamples = 8\nvalue = 6.5"] ;
+12 -> 13 ;
+14 [label="squared_error = 0.816\nsamples = 7\nvalue = 7.429"] ;
+12 -> 14 ;
+}
