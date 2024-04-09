@@ -1,17 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import StickyScrollama from './components/scrollama/StickyScrollama.js';
 
 function App() {
   return (
     <div className="App">
-      // Header section
+      {/* // Header section */}
 
-      // One section
-      
+      {/* // One section */}
+      <StickyScrollama />
 
-      // One section
+      {/* // One section */}
 
-      // Conclusion section
+      {/* // Conclusion section */}
     </div>
   );
 }

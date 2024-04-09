@@ -10,6 +10,11 @@ npm run deploy
 ```
 > This command will build the project into static files saved in `perfect_sleep/build` directory and deploy it to the `gh-pages` branch.
 
+By default, the new commit on the gh-pages branch will have a commit message of "Updates". You can specify a custom commit message via the -m option, like this:
+```shell
+npm run deploy -- -m "Your custom message"
+```
+
 </br>
 
 # Installation
@@ -53,8 +58,25 @@ import * as d3 from "d3";
 ```
 </br>
 
-## Install [Scrollama](https://github.com/russellsamora/scrollama#how-to-use)
+## Install [react-scrollama](https://jsonkao.github.io/react-scrollama/)
+Run the following command to install react-scrollama:
 
+```shell
+npm install react-scrollama --save
+```
+
+Then require/import it:
+
+```javascript
+import { Scrollama, Step } from "react-scrollama";
+```  
+
+
+</br>
+
+You can also use the original [scrollama](https://github.com/russellsamora/scrollama#how-to-use) .   
+<details>
+<summary>Install scrollama</summary>
 Run the following command to install Scrollama:
 
 ```shell
@@ -69,3 +91,7 @@ const scrollama = require("scrollama");
 ```
 
 For usage tutorial, check this website: [Usage](https://github.com/russellsamora/scrollama#how-to-use)
+
+
+</details>
+
