@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/DataVizA5/static/css/main.f855e6bc.css",
-    "main.js": "/DataVizA5/static/js/main.a124b6d3.js",
+    "main.css": "/DataVizA5/static/css/main.5c60eb49.css",
+    "main.js": "/DataVizA5/static/js/main.913125a9.js",
     "static/js/453.2c1a616d.chunk.js": "/DataVizA5/static/js/453.2c1a616d.chunk.js",
     "static/media/logo.svg": "/DataVizA5/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/DataVizA5/index.html",
-    "main.f855e6bc.css.map": "/DataVizA5/static/css/main.f855e6bc.css.map",
-    "main.a124b6d3.js.map": "/DataVizA5/static/js/main.a124b6d3.js.map",
+    "main.5c60eb49.css.map": "/DataVizA5/static/css/main.5c60eb49.css.map",
+    "main.913125a9.js.map": "/DataVizA5/static/js/main.913125a9.js.map",
     "453.2c1a616d.chunk.js.map": "/DataVizA5/static/js/453.2c1a616d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.a124b6d3.js"
+    "static/css/main.5c60eb49.css",
+    "static/js/main.913125a9.js"
   ]
 }
