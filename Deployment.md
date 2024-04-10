@@ -22,7 +22,7 @@ After the installation is done, you can run the project by running the following
 npm start
 ```
 > Since I already add needed dependencies to the `package.json` file, you don't need to install them again. So you can directly run the project after installing the dependencies.</br>
-If you encounter any dependency issues, this [chapter](#Installation) addresses some of the installation issues.
+If you encounter any dependency issues, this [chapter](#installation) addresses some of the installation issues.
 </br>
 
 # Branches and Submissions
@@ -59,7 +59,7 @@ npm run deploy -- -m "Your custom message"
 
 # File Structure
 The file structure of the project is as follows:
-```C
+```go
 |--data # contains all the datasets
 |--notebooks # contains all the jupyter notebooks
 |--|-- data_preprocessing 
@@ -80,7 +80,6 @@ The file structure of the project is as follows:
 </br>
 
 # Installation
-
 ## Install gh-pages package
 Run the following command to install gh-pages package:
 
