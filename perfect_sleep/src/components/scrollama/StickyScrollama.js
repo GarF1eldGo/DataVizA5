@@ -29,7 +29,6 @@ const StickyScrollama = () => {
           debug
           >
           {dataset.steps.map(value => {
-            console.log(value, dataset)
             const isVisible = value === dataset.data;
             const background = isVisible
               ? `rgba(44,127,184, ${dataset.progress})`
