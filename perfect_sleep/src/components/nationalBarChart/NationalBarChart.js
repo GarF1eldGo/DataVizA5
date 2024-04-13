@@ -9,6 +9,7 @@ const BarChart = () => {
   const height = 350;
 
   const fetchData = async () => {
+    // Please note the path to the data file is 'perfect_sleep/public/data/avgSleepMap.json'
     await fetch('./data/avgSleepMap.json',{
       headers : { 
         'Content-Type': 'application/json',
@@ -23,8 +24,6 @@ const BarChart = () => {
     })
     .then(data => {
       setJsonData(data.records)
-
-      console.log(jsonData);
     })
     .catch(error => console.error('There has been a problem with your fetch operation:', error));
   };

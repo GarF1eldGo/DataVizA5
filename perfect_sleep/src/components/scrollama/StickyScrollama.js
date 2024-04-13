@@ -26,7 +26,7 @@ const StickyScrollama = () => {
           progress
           onStepProgress={handleStepProgress}
           offset={0.4}
-          debug
+          // debug
           >
           {dataset.steps.map(value => {
             const isVisible = value === dataset.data;
