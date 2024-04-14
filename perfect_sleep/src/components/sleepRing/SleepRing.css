@@ -1,0 +1,11 @@
+.sleepRingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.sleepRingContainer .selectBox {
+  flex: 20%;
+}
