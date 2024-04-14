@@ -5,11 +5,15 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 import './SleepRing.css';
 
 const SleepRing = () => {
     const svgRef = useRef();
     const [jsonData, setJsonData] = useState(null);
+    const [checked, setChecked] = React.useState(true);
     const width=800;
     const height=800;
 
@@ -17,6 +21,10 @@ const SleepRing = () => {
 
     const handleChange = (event) => {
         setDateRange(event.target.value);
+    };
+
+    const handleCheckChange = (event) => {
+        setChecked(event.target.checked);
     };
 
     const fetchData = async () => {
@@ -47,9 +55,15 @@ const SleepRing = () => {
             .domain([0, 24*60]) 
             .range([0, 2 * Math.PI]); 
 
-        const colorScale = d3.scaleOrdinal()
+        var colorScale = d3.scaleOrdinal()
             .domain(colorDomain)
             .range(["#d7191c","#fdae61","#ffffbf","#abd9e9","#2c7bb6"]);
+
+        if (!checked) {
+            colorScale = d3.scaleOrdinal()
+                .domain(colorDomain)
+                .range(["#fdae61","#fdae61","#abd9e9","#abd9e9","#abd9e9"]);
+        }
 
         // remove the previous rings
         svg.selectAll('path').remove();
@@ -85,6 +99,26 @@ const SleepRing = () => {
                     .attr('fill', colorScale(record.value))
                     .attr('transform', `translate(${width / 2}, ${height / 2})`); // move the center of the circle to the center of the svg
             })
+            // if (!checked) {
+            //     var firstStartTime = oneDay[0].starttime;
+            //     var lastEndTime = oneDay[oneDay.length-1].endtime;
+            //     var startAngle = angleScale(lastEndTime);
+            //     var endAngle = angleScale(firstStartTime);
+
+            //     if (startAngle > endAngle) {
+            //         endAngle += 2 * Math.PI;
+            //     }
+
+            //     const arc = d3.arc()
+            //         .innerRadius(radius-ratio + i*ratio)
+            //         .outerRadius(radius + i*ratio)
+            //         .startAngle(startAngle)
+            //         .endAngle(endAngle);
+            //     svg.append('path')
+            //         .attr('d', arc)
+            //         .attr('fill', '#fdae61')
+            //         .attr('transform', `translate(${width / 2}, ${height / 2})`);
+            // }
         });
 
         const twentySacle = d3.scaleLinear()
@@ -126,26 +160,36 @@ const SleepRing = () => {
         if (jsonData) {
             drawRings();
         }
-    }, [jsonData, dateRange]);
+    }, [jsonData, dateRange, checked]);
 
     return (
         <div className="sleepRingContainer">
-            <Box sx={{ maxWidth: 200 }} className="selectBox">
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Select date range</InputLabel>
-                    <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={dateRange}
-                    label="Recent Sleep Data"
-                    onChange={handleChange}
-                    >
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={30}>30</MenuItem>
-                    <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                </FormControl>
-            </Box>
+            <div className="controllerContainer">
+                <FormGroup>
+                    <FormControlLabel
+                        control={
+                            <Switch checked={checked} onChange={handleCheckChange} name="gilad" />
+                        }
+                        label="Sleep Status"
+                        />
+                </FormGroup>
+                <Box sx={{ minWidth: 120 }} className="selectBox">
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Select date range</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={dateRange}
+                        label="Recent Sleep Data"
+                        onChange={handleChange}
+                        >
+                        <MenuItem value={10}>10</MenuItem>
+                        <MenuItem value={30}>30</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+            </div>
             <svg className="sleepRingSvg" ref={svgRef} width={width} height={height}></svg>
         </div>
     );

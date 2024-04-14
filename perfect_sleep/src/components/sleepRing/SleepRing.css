@@ -6,6 +6,14 @@
   width: 100%;
 }
 
-.sleepRingContainer .selectBox {
-  flex: 20%;
+.sleepRingContainer .controllerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
 }
+
+.sleepRingContainer .controllerContainer .selectBox {
+  margin-top: 20px;
+}
+
