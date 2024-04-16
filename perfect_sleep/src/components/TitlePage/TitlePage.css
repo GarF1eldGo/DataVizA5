@@ -1,5 +1,5 @@
 .title-page {
-  height: 100vh;
+  height: 130vh;
   position: relative;
   background-color: #131a41;
   color: white;
@@ -7,18 +7,19 @@
 
 .background-image {
   width: 100%;
-  height: 100%;
+  height: 98vh;
   object-fit: contain;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
 }
 
-.white-bar {
+.bar-trans {
   width: 100%;
-  height: 2px;
+  height: 15vh;
   position: absolute;
-  color: white;
-  bottom: 0;
+  background: linear-gradient(#131a41, #2c2c55);
+  bottom: -1vh;
+  z-index: 2;
 }
