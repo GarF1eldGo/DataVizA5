@@ -9,16 +9,29 @@ import SleepRing from './components/sleepRing/SleepRing.js';
 function App() {
   return (
     <div className="App">
-      {/* // Header section */}
+      {/* // Introduction */}
       <TitlePage />
-      {/* // One section */}
-      <SleepRing />
       <NationalBarChart />
+
+      {/* // Sleep Apps Intro */}
+
+      {/* // Factors that Affect Sleep */}
+
+      {/* // Sleep Apps Intro */}
+
+      {/* // Stress */}
+
+      {/* // Consumption */}
+
+      {/* // Phone Usage */}
+
+      {/* // Interactive Dashboard */}
+
+      {/* // Working*/}
+      <SleepRing />
       <StickyScrollama />
 
-      {/* // One section */}
-
-      {/* // Conclusion section */}
+      {/* // Conclusion */}
     </div>
   );
 }
