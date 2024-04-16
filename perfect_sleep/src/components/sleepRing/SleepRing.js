@@ -72,13 +72,10 @@ const SleepRing = () => {
         var selectedData = jsonData.slice(-dateRange); // show the last x days
         var ratio = 0;
         const radius=50;
-        if (dateRange <= 10) {
-            ratio = 10;
-        } else if (dateRange <= 30) {
-            ratio = 5;
-        } else {
-            ratio = 3;
-        }
+        const length = selectedData.length-1;
+        const desiredRadius = 200;
+        ratio = (desiredRadius - radius) / length;
+
         selectedData.forEach((oneDay, i) => {
             oneDay.forEach(record => {
                 var startAngle = angleScale(record.starttime);
@@ -127,7 +124,7 @@ const SleepRing = () => {
         const radians = Math.PI / 180;
 
         // draw the clock
-        var clockRadius = radius + (dateRange+2)*ratio;
+        var clockRadius = desiredRadius + 10;
         var clockScaleRadius = clockRadius* 1.1;
         var clockFace = svg.append('g')
             .attr('transform', `translate(${width/2}, ${height/2})`);
