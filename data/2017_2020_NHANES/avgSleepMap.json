@@ -1,1 +1,104 @@
-{"data": [{"hour": 2.0, "count": 11}, {"hour": 2.5, "count": 4}, {"hour": 3.0, "count": 13}, {"hour": 3.5, "count": 21}, {"hour": 4.0, "count": 40}, {"hour": 4.5, "count": 45}, {"hour": 5.0, "count": 95}, {"hour": 5.5, "count": 110}, {"hour": 6.0, "count": 197}, {"hour": 6.5, "count": 279}, {"hour": 7.0, "count": 401}, {"hour": 7.5, "count": 473}, {"hour": 8.0, "count": 513}, {"hour": 8.5, "count": 347}, {"hour": 9.0, "count": 303}, {"hour": 9.5, "count": 156}, {"hour": 10.0, "count": 99}, {"hour": 10.5, "count": 61}, {"hour": 11.0, "count": 46}, {"hour": 11.5, "count": 19}, {"hour": 12.0, "count": 19}, {"hour": 12.5, "count": 5}, {"hour": 13.0, "count": 3}, {"hour": 13.5, "count": 3}, {"hour": 14.0, "count": 3}]}
+{
+    "records": [
+        {
+            "hour": 2.0,
+            "count": 11
+        },
+        {
+            "hour": 2.5,
+            "count": 4
+        },
+        {
+            "hour": 3.0,
+            "count": 13
+        },
+        {
+            "hour": 3.5,
+            "count": 21
+        },
+        {
+            "hour": 4.0,
+            "count": 40
+        },
+        {
+            "hour": 4.5,
+            "count": 45
+        },
+        {
+            "hour": 5.0,
+            "count": 95
+        },
+        {
+            "hour": 5.5,
+            "count": 110
+        },
+        {
+            "hour": 6.0,
+            "count": 197
+        },
+        {
+            "hour": 6.5,
+            "count": 279
+        },
+        {
+            "hour": 7.0,
+            "count": 401
+        },
+        {
+            "hour": 7.5,
+            "count": 473
+        },
+        {
+            "hour": 8.0,
+            "count": 513
+        },
+        {
+            "hour": 8.5,
+            "count": 347
+        },
+        {
+            "hour": 9.0,
+            "count": 303
+        },
+        {
+            "hour": 9.5,
+            "count": 156
+        },
+        {
+            "hour": 10.0,
+            "count": 99
+        },
+        {
+            "hour": 10.5,
+            "count": 61
+        },
+        {
+            "hour": 11.0,
+            "count": 46
+        },
+        {
+            "hour": 11.5,
+            "count": 19
+        },
+        {
+            "hour": 12.0,
+            "count": 19
+        },
+        {
+            "hour": 12.5,
+            "count": 5
+        },
+        {
+            "hour": 13.0,
+            "count": 3
+        },
+        {
+            "hour": 13.5,
+            "count": 3
+        },
+        {
+            "hour": 14.0,
+            "count": 3
+        }
+    ]
+}

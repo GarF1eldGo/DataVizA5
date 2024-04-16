@@ -4,6 +4,7 @@ import React from 'react';
 import TitlePage from './components/TitlePage/TitlePage.js';
 import NationalBarChart from './components/nationalBarChart/NationalBarChart.js';
 import StickyScrollama from './components/scrollama/StickyScrollama.js';
+import StickyLeftScrollama from './components/scrollama/StickyLeftScrollama.js';
 import SleepRing from './components/sleepRing/SleepRing.js';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       {/* // Introduction */}
       <TitlePage />
       <NationalBarChart />
+      <StickyLeftScrollama />
 
       {/* // Sleep Apps Intro */}
 

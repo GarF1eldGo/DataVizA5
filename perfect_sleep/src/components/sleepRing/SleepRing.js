@@ -13,11 +13,11 @@ import './SleepRing.css';
 const SleepRing = () => {
     const svgRef = useRef();
     const [jsonData, setJsonData] = useState(null);
-    const [checked, setChecked] = React.useState(true);
+    const [checked, setChecked] = useState(true);
     const width=800;
     const height=800;
 
-    const [dateRange, setDateRange] = React.useState(30);
+    const [dateRange, setDateRange] = useState(30);
 
     const handleChange = (event) => {
         setDateRange(event.target.value);

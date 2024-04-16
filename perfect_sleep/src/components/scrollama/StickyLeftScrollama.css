@@ -1,0 +1,42 @@
+.sectionContainer {
+    padding: 40vh 2vw 20vh;
+    display: flex;
+    justify-content: space-between;
+}
+  
+.sectionContainer  .leftContainer {
+    flex-basis: 60%;
+    position: sticky;
+    width: 100%;
+    height: 60vh;
+    top: 20vh;
+    background-color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.sectionContainer  .scrollamaContainer {
+    flex-basis: 35%;
+}
+
+.sectionContainer  .step {
+    margin: 0 auto 3rem auto;
+    padding: 180px 0;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionContainer .step .p{
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 1rem;
+    margin: 0;
+}
+
+.sectionContainer .step:last-child {
+    margin-bottom: 0;
+}
