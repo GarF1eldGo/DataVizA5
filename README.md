@@ -1,4 +1,4 @@
-# SlumberStates: Plotting Your Path to Quality Sleep
+# SlumberStats: Plotting Your Path to Quality Sleep
 
 What is one experience everyone shares? After a hectic day of work, we all turn off the lights, snuggle into our blankets, and fall into the enchantment of sleep. Yet, in the whirlwind of our daily routines, the art of perfecting sleep eludes us. We aim to enable exploration, guiding users to understand and improve their sleep, key to reducing stress and living a good life. Through interactive toggles, users can undergo a “choose your own adventure” style that explores different factors and their impacts on sleep duration and quality.  
 
