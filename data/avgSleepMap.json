@@ -2,103 +2,128 @@
     "records": [
         {
             "hour": 2.0,
-            "count": 11
+            "count": 11,
+            "percent": 0.0033680342927127987
         },
         {
             "hour": 2.5,
-            "count": 4
+            "count": 4,
+            "percent": 0.001224739742804654
         },
         {
             "hour": 3.0,
-            "count": 13
+            "count": 13,
+            "percent": 0.003980404164115126
         },
         {
             "hour": 3.5,
-            "count": 21
+            "count": 21,
+            "percent": 0.006429883649724434
         },
         {
             "hour": 4.0,
-            "count": 40
+            "count": 40,
+            "percent": 0.01224739742804654
         },
         {
             "hour": 4.5,
-            "count": 45
+            "count": 45,
+            "percent": 0.013778322106552358
         },
         {
             "hour": 5.0,
-            "count": 95
+            "count": 95,
+            "percent": 0.029087568891610533
         },
         {
             "hour": 5.5,
-            "count": 110
+            "count": 110,
+            "percent": 0.03368034292712799
         },
         {
             "hour": 6.0,
-            "count": 197
+            "count": 197,
+            "percent": 0.06031843233312921
         },
         {
             "hour": 6.5,
-            "count": 279
+            "count": 279,
+            "percent": 0.08542559706062462
         },
         {
             "hour": 7.0,
-            "count": 401
+            "count": 401,
+            "percent": 0.12278015921616657
         },
         {
             "hour": 7.5,
-            "count": 473
+            "count": 473,
+            "percent": 0.14482547458665035
         },
         {
             "hour": 8.0,
-            "count": 513
+            "count": 513,
+            "percent": 0.15707287201469688
         },
         {
             "hour": 8.5,
-            "count": 347
+            "count": 347,
+            "percent": 0.10624617268830373
         },
         {
             "hour": 9.0,
-            "count": 303
+            "count": 303,
+            "percent": 0.09277403551745254
         },
         {
             "hour": 9.5,
-            "count": 156
+            "count": 156,
+            "percent": 0.047764849969381504
         },
         {
             "hour": 10.0,
-            "count": 99
+            "count": 99,
+            "percent": 0.030312308634415187
         },
         {
             "hour": 10.5,
-            "count": 61
+            "count": 61,
+            "percent": 0.018677281077770974
         },
         {
             "hour": 11.0,
-            "count": 46
+            "count": 46,
+            "percent": 0.014084507042253521
         },
         {
             "hour": 11.5,
-            "count": 19
+            "count": 19,
+            "percent": 0.005817513778322106
         },
         {
             "hour": 12.0,
-            "count": 19
+            "count": 19,
+            "percent": 0.005817513778322106
         },
         {
             "hour": 12.5,
-            "count": 5
+            "count": 5,
+            "percent": 0.0015309246785058174
         },
         {
             "hour": 13.0,
-            "count": 3
+            "count": 3,
+            "percent": 0.0009185548071034905
         },
         {
             "hour": 13.5,
-            "count": 3
+            "count": 3,
+            "percent": 0.0009185548071034905
         },
         {
             "hour": 14.0,
-            "count": 3
+            "count": 3,
+            "percent": 0.0009185548071034905
         }
     ]
 }
