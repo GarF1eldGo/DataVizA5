@@ -2,15 +2,48 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: -15vh;
-    height: 100vh;
+    height: 115vh;
+    top: -14vh;
+    position: relative;
+    background: url('background1.jpg') no-repeat;
+    background-size: cover;
+    background-position: top center;
 }
+
+.bar {
+    width: 100%;
+    height: 10vh;
+    top: 14vh;
+    position: absolute;
+    background: linear-gradient(to bottom, #28206b, transparent);
+    z-index: 2;
+  }
+
+  .bar2 {
+    width: 100%;
+    height: 6vh;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to bottom, #211559, #210c63);
+    opacity: 70%;
+    z-index: 2;
+  }
+
+  .bar3 {
+    width: 100%;
+    height: 6vh;
+    bottom: -6vh;
+    position: absolute;
+    background: linear-gradient(to bottom, #210c63, transparent);
+    opacity: 90%;
+    z-index: 2;
+  }
 
 .introContainer .questionDiv {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
+    padding-top: 24vh;
 }
 
 .introContainer .textContainer {
@@ -31,7 +64,7 @@
 
 .introContainer .textContainer h1 {
     position: absolute;
-    color: antiquewhite;
+    color: white;
     font-size: 50px;
     left: 55%;
     top: 0;
@@ -40,9 +73,14 @@
 }
 
 .introContainer .questionDiv h1 {
-    color: antiquewhite;
+    color: white;
     font-size: 50px;
 } 
+
+.span {
+    color: #91f5ff;
+    font-family: 'Palace Script MT', cursive;
+}
 
 /* .introContainer .sliderContainer {
     display: flex;

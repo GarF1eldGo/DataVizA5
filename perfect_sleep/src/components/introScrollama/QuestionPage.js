@@ -43,7 +43,7 @@ const QuestionPage = () => {
             inputProps={{ style: { textAlign: 'center' }}}
             sx={{
                 input: {
-                    color: "antiquewhite",
+                    color: "white",
                 },
                 '& .MuiInput-underline:before': {
                     borderBottomColor: 'white'
@@ -52,7 +52,7 @@ const QuestionPage = () => {
                     borderBottomColor: 'white'
                 },
                 '& .MuiInputBase-input': {
-                    fontSize: '30px'
+                    fontSize: '50px'
                 },
                 '&:hover .MuiInput-underline:before': {
                     borderBottomColor: 'white' 
@@ -62,7 +62,7 @@ const QuestionPage = () => {
                 }
                 }}
             error={error}
-            helperText={error ? "Please enter a positive integer less than 12" : ""}
+            helperText={error ? "Please enter a positive integer less than 14 (we hope you are not sleeping more than 14 hours on average!)" : ""}
         />
     }
 
@@ -72,13 +72,16 @@ const QuestionPage = () => {
 
     return (
         <div className="introContainer">
+            <div className = "bar"></div>
             <div className="questionDiv">
-                <h1>How many hours do you sleep every night?</h1>
+                <h1>How many hours do YOU <span className="span"> sleep </span> every night?</h1>
             </div>
             <div className="textContainer">
                 {drawTextField()}    
-                <h1>Hour</h1>   
+                <h1>Hours</h1>   
             </div>
+            <div className = "bar2"></div>
+            <div className = "bar3"></div>
             {/* <div className="sliderContainer">
                 <Slider
                     className="slider"

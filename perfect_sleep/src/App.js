@@ -18,7 +18,6 @@ function App() {
       <SnapScroll components={[TitlePage, QuestionPage]} />
       <IntroScrollama />
 
-
       {/* // Sleep Apps Intro */}
 
       {/* // Factors that Affect Sleep */}

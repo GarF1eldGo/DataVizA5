@@ -35,7 +35,7 @@ const SleepingGirl = (props) => {
     }, []);
 
     return (
-        <div className="sleepGrilContainer">
+        <div className="sleepGirlContainer">
             {index === 0 ? <Component1 avgSleep={avgSleep}/> : <Component2/>}
         </div>
     );
