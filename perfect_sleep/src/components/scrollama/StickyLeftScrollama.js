@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Scrollama, Step } from 'react-scrollama';
 import './StickyLeftScrollama.css';
 
-const StickyLeftScrollama = () => {
+const StickyLeftScrollama = (props) => {
   const [dataset, setDataset] = useState({
     data: 0,
     steps: [10, 20, 30],
     progress: 0,
   });
+  const LeftComponent = props.leftComponent;
+  const RightComponent = props.rightComponent;
 
   const handleStepEnter = ({ data }) => {
     setDataset(prevData => ({ ...prevData, data: data}));
@@ -20,7 +22,7 @@ const StickyLeftScrollama = () => {
   return (
     <div className="sectionContainer">
       <div className="leftContainer">
-        Current step: {dataset.data}
+        <LeftComponent />
       </div>
       
       <div className="scrollamaContainer">
@@ -41,10 +43,7 @@ const StickyLeftScrollama = () => {
             return (
               <Step data={value} key={value}>
                 <div className="step" style={{ background }}>
-                  <p>step value: {value}</p>
-                  <p style={{ visibility }}>
-                    {Math.round(dataset.progress * 1000) / 10 + '%'}
-                  </p>
+                  <RightComponent value={value} />
                 </div>
               </Step>
             );

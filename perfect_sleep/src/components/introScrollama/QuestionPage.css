@@ -1,0 +1,44 @@
+.introContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: -15vh;
+    height: 100vh;
+}
+
+.introContainer .questionDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.introContainer .textContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.introContainer .textContainer .standardTextField {
+    width: 10%;
+}
+
+.introContainer .questionDiv h1 {
+    color: antiquewhite;
+    font-size: 50px;
+} 
+
+/* .introContainer .sliderContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10%;
+}
+
+.introContainer .sliderContainer .slider {
+    width: 30%;
+}
+*/
+

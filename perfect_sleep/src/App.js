@@ -6,14 +6,26 @@ import NationalBarChart from './components/nationalBarChart/NationalBarChart.js'
 import StickyScrollama from './components/scrollama/StickyScrollama.js';
 import StickyLeftScrollama from './components/scrollama/StickyLeftScrollama.js';
 import SleepRing from './components/sleepRing/SleepRing.js';
+import QuestionPage from './components/introScrollama/QuestionPage.js';
+import IntroScrollama from './components/introScrollama/IntroScrollama.js';
 
 function App() {
   return (
     <div className="App">
       {/* // Introduction */}
-      <TitlePage />
-      <NationalBarChart />
-      <StickyLeftScrollama />
+
+      <div className="scroller">
+        <div className="onePage">
+          <TitlePage />
+        </div>
+
+        <div className="onePage">
+          <QuestionPage /> 
+        </div>
+      </div>
+
+      <IntroScrollama />
+
 
       {/* // Sleep Apps Intro */}
 

@@ -5,6 +5,7 @@ import './NationalBarChart.css';
 const BarChart = () => {
   const svgRef = useRef();
   const [jsonData, setJsonData] = useState(null);
+  const [avgSleep, setAvgSleep] = useState(null);
   const width = 800;
   const height = 350;
 
@@ -50,11 +51,13 @@ const BarChart = () => {
 
     svg.append('g')
       .attr('transform', `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .style("color", "white");
 
     svg.append('g')
       .attr('transform', `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .style("color", "white");
 
     svg.selectAll("mybar")
       .data(jsonData)
@@ -67,6 +70,12 @@ const BarChart = () => {
       .attr('height', d => 0)
       .attr('y', d => y(0))
 
+    if (avgSleep) {
+      svg.selectAll("rect")
+        .filter(d => d.hour === avgSleep)
+        .attr("fill", "orange");
+    }
+
     // animation
     svg.selectAll("rect")
       .transition()
@@ -75,11 +84,11 @@ const BarChart = () => {
       .attr('y', d => y(d.count))
       .delay((d,i) => i*100);
 
-  }, [jsonData]);
+  }, [jsonData, avgSleep]);
 
   return (
-    <div className="nationalContainer">
-      <svg className="nationalSvg" ref={svgRef} width={width} height={height}></svg>
+    <div className="nationalContainer" id="test">
+      <svg id="nationalSvg" ref={svgRef} width={width} height={height}></svg>
     </div>
   );
 };

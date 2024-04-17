@@ -5,3 +5,18 @@
   background-color: #2c2c55;
 }
 
+.scroller {
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroller .onePage {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: 100%;
+}
