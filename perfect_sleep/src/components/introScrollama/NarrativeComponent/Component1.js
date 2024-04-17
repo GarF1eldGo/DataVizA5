@@ -5,6 +5,7 @@ import {ReactComponent as SleepSvg} from './tmpSleepGirl.svg';
 const Component1 = ({avgSleep}) => {
     const [jsonData, setJsonData] = useState(null);
     const [betterPercent, setBetterPercent] = useState(0);
+    const [hintColor, setHintColor] = useState('green');
 
     const fetchData = async () => {
         // Please note the path to the data file is 'perfect_sleep/public/data/Apple_Watch_Sleep.json'
@@ -31,13 +32,17 @@ const Component1 = ({avgSleep}) => {
 
         var tmpSum = 0;
         jsonData.records.forEach(d => {
-            console.log(d.hour, avgSleep);
             if (d.hour < avgSleep){
                 tmpSum += d.percent;
             }
         });
         tmpSum = tmpSum*100;
         setBetterPercent(tmpSum.toFixed(1));
+        if (tmpSum > 50) {
+            setHintColor('#A1BE95');
+        } else {
+            setHintColor('#F96167');
+        }
     }, [jsonData, avgSleep]);
 
     useEffect(() => {
@@ -47,7 +52,7 @@ const Component1 = ({avgSleep}) => {
     return (
         <div className="component1Container">
             <div className="imgContainer">
-            <h1 id="girlNarrative">You sleep better than {betterPercent}% United States Citizens!</h1>
+                <h1 id="girlNarrative">You sleep better than <span style={{ color: hintColor }}>{betterPercent}%</span> United States Citizens!</h1>
                 <SleepSvg className="sleepSvg"/>
             </div>
         </div>
