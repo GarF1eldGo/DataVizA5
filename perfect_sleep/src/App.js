@@ -8,22 +8,14 @@ import StickyLeftScrollama from './components/scrollama/StickyLeftScrollama.js';
 import SleepRing from './components/sleepRing/SleepRing.js';
 import QuestionPage from './components/introScrollama/QuestionPage.js';
 import IntroScrollama from './components/introScrollama/IntroScrollama.js';
+import SnapScroll from './components/scrollama/SnapScroll.js';
 
 function App() {
   return (
     <div className="App">
       {/* // Introduction */}
 
-      <div className="scroller">
-        <div className="onePage">
-          <TitlePage />
-        </div>
-
-        <div className="onePage">
-          <QuestionPage /> 
-        </div>
-      </div>
-
+      <SnapScroll components={[TitlePage, QuestionPage]} />
       <IntroScrollama />
 
 

@@ -22,7 +22,7 @@ const QuestionPage = () => {
             // check if the input is numeric
             if (isNaN(inputVal)) {
                 setError(true);
-            } else if (inputVal < 2 || inputVal > 11) {// check if the input is within the range
+            } else if (inputVal < 2 || inputVal > 14) {// check if the input is within the range
                 setError(true);
             } else {
                 setAvgSleep(inputVal);
