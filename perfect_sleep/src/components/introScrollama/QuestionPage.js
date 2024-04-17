@@ -77,7 +77,7 @@ const QuestionPage = () => {
             </div>
             <div className="textContainer">
                 {drawTextField()}    
-                {/* <p>Hour</p>    */}
+                <h1>Hour</h1>   
             </div>
             {/* <div className="sliderContainer">
                 <Slider

@@ -23,7 +23,7 @@
 .sectionContainer  .step {
     margin: 0 auto 3rem auto;
     padding: 180px 0;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
     display: flex;
     flex-direction: column;
     align-items: center;

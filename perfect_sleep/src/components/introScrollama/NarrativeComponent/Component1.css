@@ -1,0 +1,18 @@
+.component1Container {
+    color: antiquewhite;
+}
+
+.component1Container .imgContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.component1Container .imgContainer .sleepSvg {
+    flex-basis: 50%;
+}
+
+.component1Container .imgContainer #girlNarrative {
+    flex-basis: 50%;
+}
+

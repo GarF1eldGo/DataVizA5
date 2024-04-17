@@ -1,10 +1,10 @@
-.sectionContainer {
+.sectionLeftContainer {
     padding: 0vh 2vw 20vh;
     display: flex;
     justify-content: space-between;
 }
   
-.sectionContainer  .leftContainer {
+.sectionLeftContainer  .leftContainer {
     flex-basis: 60%;
     position: sticky;
     width: 100%;
@@ -16,13 +16,13 @@
     justify-content: center;
 }
   
-.sectionContainer  .scrollamaContainer {
+.sectionLeftContainer  .scrollamaContainer {
     flex-basis: 35%;
 }
 
-.sectionContainer  .step {
+.sectionLeftContainer  .step {
     margin: 0 auto 3rem auto;
-    padding: 180px 0;
+    padding: 90px 0;
     border: 1px solid #333;
     display: flex;
     flex-direction: column;
@@ -31,13 +31,13 @@
     margin-top: 40%;
 }
 
-.sectionContainer .step .p{
+.sectionLeftContainer .step .p{
     font-size: 1.8rem;
     text-align: center;
     padding: 1rem;
     margin: 0;
 }
 
-.sectionContainer .step:last-child {
+.sectionLeftContainer .step:last-child {
     margin-bottom: 0;
 }

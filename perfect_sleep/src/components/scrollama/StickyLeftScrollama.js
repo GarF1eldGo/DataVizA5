@@ -5,7 +5,7 @@ import './StickyLeftScrollama.css';
 const StickyLeftScrollama = (props) => {
   const [dataset, setDataset] = useState({
     data: 0,
-    steps: [10, 20, 30],
+    steps: [0, 1, 2],
     progress: 0,
   });
   const LeftComponent = props.leftComponent;
@@ -20,7 +20,7 @@ const StickyLeftScrollama = (props) => {
   };
 
   return (
-    <div className="sectionContainer">
+    <div className="sectionLeftContainer">
       <div className="leftContainer">
         <LeftComponent />
       </div>
@@ -42,7 +42,7 @@ const StickyLeftScrollama = (props) => {
             const visibility = isVisible ? 'visible' : 'hidden';
             return (
               <Step data={value} key={value}>
-                <div className="step" style={{ background }}>
+                <div className="step" >
                   <RightComponent value={value} />
                 </div>
               </Step>

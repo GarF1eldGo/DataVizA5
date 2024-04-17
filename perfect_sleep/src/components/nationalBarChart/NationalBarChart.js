@@ -32,10 +32,10 @@ const BarChart = () => {
   const handleStorageChange = () => {
     var val = sessionStorage.getItem("avgSleep");
     val = parseFloat(val);
-    console.log(val);
+    
     if (val) {
       setAvgSleep(Math.round(val*2)/2);
-      sessionStorage.removeItem("avgSleep");
+      // sessionStorage.removeItem("avgSleep");
     }
   }
 

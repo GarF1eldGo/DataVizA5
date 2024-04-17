@@ -32,7 +32,6 @@ const SnapScroll = (props) => {
             offset={0.9}
             >
             {components.map((Component, index) => {
-                console.log("hello: ", typeof Component);
                 return (
                     <Step key={index}>
                         <div className="step" >

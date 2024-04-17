@@ -14,14 +14,29 @@
 }
 
 .introContainer .textContainer {
-    display: flex;
+    /* display: flex; */
+    position: relative;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .introContainer .textContainer .standardTextField {
     width: 10%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.introContainer .textContainer h1 {
+    position: absolute;
+    color: antiquewhite;
+    font-size: 50px;
+    left: 55%;
+    top: 0;
+    margin: 0 10px;
+    /* transform: translateX(-50%); */
 }
 
 .introContainer .questionDiv h1 {
