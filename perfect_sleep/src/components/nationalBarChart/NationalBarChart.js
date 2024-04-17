@@ -5,7 +5,7 @@ import './NationalBarChart.css';
 const BarChart = () => {
   const svgRef = useRef();
   const [jsonData, setJsonData] = useState(null);
-  const [avgSleep, setAvgSleep] = useState(null);
+  const [avgSleep, setAvgSleep] = useState(sessionStorage.getItem("avgSleep"));
   const width = 800;
   const height = 350;
 
@@ -29,8 +29,23 @@ const BarChart = () => {
     .catch(error => console.error('There has been a problem with your fetch operation:', error));
   };
 
+  const handleStorageChange = () => {
+    var val = sessionStorage.getItem("avgSleep");
+    val = parseFloat(val);
+    console.log(val);
+    if (val) {
+      setAvgSleep(Math.round(val*2)/2);
+      sessionStorage.removeItem("avgSleep");
+    }
+  }
+
   useEffect(() => {
     fetchData();
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    }
   }, []);
 
   useEffect(() => {
@@ -39,13 +54,14 @@ const BarChart = () => {
 
     if (!jsonData) return;
     
+    const formatPercent = d3.format(".0%");
     const x = d3.scaleBand()
       .domain(jsonData.map(d => d.hour))
       .range([margin.left, width - margin.right])
       .padding(0.1);
 
     const y = d3.scaleLinear()
-      .domain([0, d3.max(jsonData, d => d.count)])
+      .domain([0, d3.max(jsonData, d => d.percent)])
       .nice()
       .range([height - margin.bottom, margin.top]);
 
@@ -56,13 +72,14 @@ const BarChart = () => {
 
     svg.append('g')
       .attr('transform', `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y))
+      .call(d3.axisLeft(y).tickFormat(formatPercent))
       .style("color", "white");
 
     svg.selectAll("mybar")
       .data(jsonData)
       .enter()
       .append("rect")
+      .attr("class", "mybar")
       .attr("x", d => x(d.hour))
       .attr("width", x.bandwidth())
       .attr("fill", "#69b3a2")
@@ -70,18 +87,20 @@ const BarChart = () => {
       .attr('height', d => 0)
       .attr('y', d => y(0))
 
+    // highlight the bar with the average sleep
     if (avgSleep) {
-      svg.selectAll("rect")
+      svg.selectAll(".mybar")
+        .attr("fill", "#69b3a2")
         .filter(d => d.hour === avgSleep)
         .attr("fill", "orange");
     }
 
     // animation
-    svg.selectAll("rect")
+    svg.selectAll(".mybar")
       .transition()
       .duration(500)
-      .attr('height', d => y(0) - y(d.count))
-      .attr('y', d => y(d.count))
+      .attr('height', d => y(0) - y(d.percent))
+      .attr('y', d => y(d.percent))
       .delay((d,i) => i*100);
 
   }, [jsonData, avgSleep]);

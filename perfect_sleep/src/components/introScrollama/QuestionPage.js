@@ -26,6 +26,8 @@ const QuestionPage = () => {
                 setError(true);
             } else {
                 setAvgSleep(inputVal);
+                sessionStorage.setItem("avgSleep", (inputVal).toString());
+                window.dispatchEvent(new Event('storage'));
                 document.getElementById("introScrollamaContainer").scrollIntoView({behavior: "smooth"}); // scroll to the next section
             }
         }
