@@ -22,7 +22,7 @@ const StickyLeftScrollama = (props) => {
   return (
     <div className="sectionLeftContainer">
       <div className="leftContainer">
-        <LeftComponent />
+        <LeftComponent value={dataset.data} progress={dataset.progress}/>
       </div>
       
       <div className="scrollamaContainer">
@@ -35,11 +35,11 @@ const StickyLeftScrollama = (props) => {
           // debug
           >
           {dataset.steps.map(value => {
-            const isVisible = value === dataset.data;
-            const background = isVisible
-              ? `rgba(44,127,184, ${dataset.progress})`
-              : 'white';
-            const visibility = isVisible ? 'visible' : 'hidden';
+            // const isVisible = value === dataset.data;
+            // const background = isVisible
+            //   ? `rgba(44,127,184, ${dataset.progress})`
+            //   : 'white';
+            // const visibility = isVisible ? 'visible' : 'hidden';
             return (
               <Step data={value} key={value}>
                 <div className="step" >

@@ -6,9 +6,9 @@ const BarChart = () => {
   const svgRef = useRef();
   const containerRef = useRef();
   const [jsonData, setJsonData] = useState(null);
-  const [avgSleep, setAvgSleep] = useState(sessionStorage.getItem("avgSleep"));
+  const [avgSleep, setAvgSleep] = useState(0);
   const width = 800;
-  const height = 350;
+  const height = 650;
 
   const fetchData = async () => {
     // Please note the path to the data file is 'perfect_sleep/public/data/avgSleepMap.json'
@@ -41,10 +41,10 @@ const BarChart = () => {
 
   const animateD3 = () => {
     const svg = d3.select(svgRef.current);
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    const margin = { top: 60, right: 20, bottom: 90, left: 80 };
     
     if (!jsonData) return;
-
+    
     svg.selectAll(".mybar")
       .remove();
 
@@ -86,6 +86,7 @@ const BarChart = () => {
   }
 
   useEffect(() => {
+    handleStorageChange();
     fetchData();
     window.addEventListener('storage', handleStorageChange);
 
@@ -107,10 +108,10 @@ const BarChart = () => {
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    const margin = { top: 60, right: 20, bottom: 90, left: 80 };
 
     if (!jsonData) return;
-
+  
     svg.selectAll(".mybar")
       .remove();
 
@@ -134,6 +135,45 @@ const BarChart = () => {
       .attr('transform', `translate(${margin.left},0)`)
       .call(d3.axisLeft(y).tickFormat(formatPercent))
       .style("color", "white");
+    
+    // Add x-axis label
+    svg.append('text')
+      .attr('x', width / 2 + margin.left/2)
+      .attr('y', height-margin.bottom+40)
+      .attr('text-anchor', 'middle')
+      .text('Average Sleep Hours')
+      .style("fill", "white");
+    
+    // Add y-axis label
+    svg.append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('x', -height / 2)
+      .attr('y', margin.left-40)
+      .attr('text-anchor', 'middle')
+      .text('Percentage')
+      .style("fill", "white");
+
+    // Add source at left bottom
+    svg.append('text')  
+    .attr('x', margin.left)  
+    .attr('y', height-10) 
+    .style('fill', 'gray') 
+    .text('Source: ')  
+    .append('a')  
+        .attr('xlink:href', 'https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Questionnaire&Cycle=2017-2020')  
+        .style('text-decoration', 'underline') 
+        .style('cursor', 'pointer') 
+        .style('fill', 'gray')
+        .text('2017-March 2020 Pre-Pandemic Questionnaire Data - Continuous NHANES');  // 设置链接部分的文本内容
+
+    // Add title
+    svg.append('text')
+      .attr('x', margin.left)
+      .attr('y', margin.top - 30)
+      .attr('text-anchor', 'left')
+      .style('font-size', '24px')
+      .style('fill', 'white')
+      .text('Percentage of US Adults with Different Sleep Durations');
 
     svg.selectAll("mybar")
       .data(jsonData)
