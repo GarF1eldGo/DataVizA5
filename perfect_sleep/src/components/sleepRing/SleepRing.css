@@ -2,12 +2,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   /* background-color: #131a41; */
 }
 
+.sleepRingContainer .sleepRingPart {
+  display: block;
+  position: relative;
+}
+
+.sleepRingContainer .sleepRingLegend {
+  position: absolute;
+  top: -5%;
+  right: 0%;
+}
+
 .sleepRingContainer .controllerContainer {
+  position: absolute;
+  top: -10%;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,11 +31,3 @@
 .sleepRingContainer .controllerContainer .selectBox {
   margin-top: 20px;
 }
-
-/* .sleepRingContainer  fieldset{
-  border-color: white;
-}
-
-.sleepRingContainer .MuiInputBase-root {
-  border-color: white;
-} */

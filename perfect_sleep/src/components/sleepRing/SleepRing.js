@@ -10,17 +10,19 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { createTheme, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import './SleepRing.css';
 import LineChart from './LineChart';
+
+import './SleepRing.css';
 
 const SleepRing = () => {
     const svgRef = useRef();
+    const svgLegendRef = useRef();
     const [jsonData, setJsonData] = useState(null);
     const [checked, setChecked] = useState(true);
     const [dateRange, setDateRange] = useState(7);
     var selectedIdx = null;
-    const width=800;
-    const height=800;
+    const width=600;
+    const height=500;
 
     const handleChange = (event) => {
         setDateRange(event.target.value);
@@ -222,6 +224,62 @@ const SleepRing = () => {
 
     };
 
+    const colorLegend = () => {
+        const svg = d3.select(svgLegendRef.current);
+
+        // remove the previous legend
+        svg.selectAll('g').remove();
+        
+        var colorDomain = ['Awake', 'REM',
+            'Core', 'Deep'];
+        var colorScale = d3.scaleOrdinal()
+            .domain(colorDomain)
+            .range(["#d7191c", "#ffffbf", "#abd9e9", "#2c7bb6"]);
+        if (!checked) {
+            colorDomain = ['Awake', 'Asleep'];
+            colorScale = d3.scaleOrdinal()
+                .domain(colorDomain)
+                .range(["#d7191c","#2c7bb6","#2c7bb6","#2c7bb6"]);
+        }
+        var y=0;
+        var x=0;
+        for(var i=0; i<colorDomain.length; i++) {
+            var tgrp = svg.append('g')
+                .attr('transform', `translate(${x},${y + i*20})`);
+            tgrp.append('rect')
+                .attr('width', 10)
+                .attr('height', 10)
+                .attr('fill', colorScale(colorDomain[i]));
+
+            tgrp.append('text')
+                .attr('x', 15)
+                .attr('y', 10)
+                .text(colorDomain[i])
+                .attr('fill', 'white');
+        }
+        var y=0;
+        var x=80;
+        colorDomain=["Weekday", "Weekend"];
+        colorScale = d3.scaleOrdinal()
+            .domain(colorDomain)
+            .range(["#ffcdb2", "#ffb4a2"]);
+
+        for(var i=0; i<colorDomain.length; i++) {
+            var tgrp = svg.append('g')
+                .attr('transform', `translate(${x},${y + i*20})`);
+            tgrp.append('rect')
+                .attr('width', 10)
+                .attr('height', 10)
+                .attr('fill', colorScale(colorDomain[i]));
+
+            tgrp.append('text')
+                .attr('x', 15)
+                .attr('y', 10)
+                .text(colorDomain[i])
+                .attr('fill', 'white');
+        }
+    }
+
     const darkTheme = createTheme({
         palette: {
           mode: 'dark', // start dark mode
@@ -235,41 +293,47 @@ const SleepRing = () => {
     useEffect(() => {
         if (jsonData) {
             drawRings();
+            colorLegend();
         }
     }, [jsonData, dateRange, checked]);
 
     return (
         <div className="sleepRingContainer">
-            <div className="controllerContainer">
-            <ThemeProvider theme={darkTheme}>
-            <CssBaseline />
-                <FormGroup>
-                    <FormControlLabel
-                        control={
-                            <Switch checked={checked} onChange={handleCheckChange} name="gilad" />
-                        }
-                        label="Sleep Status"
-                        />
-                </FormGroup>
-                <Box sx={{ minWidth: 120}} className="selectBox" borderColor={"white"}>
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label" sx={{color:"white"}}>Select date range</InputLabel>
-                        <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={dateRange}
-                        label="Recent Sleep Data"
-                        onChange={handleChange}
-                        >
-                        <MenuItem value={1}>1</MenuItem>
-                        <MenuItem value={7}>7</MenuItem>
-                        <MenuItem value={14}>14</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-                </ThemeProvider>
+            <div className="sleepRingPart">
+                <div className="controllerContainer">
+                    <ThemeProvider theme={darkTheme}>
+                        <CssBaseline />
+                        <FormGroup>
+                            <FormControlLabel
+                                control={
+                                    <Switch checked={checked} onChange={handleCheckChange} name="gilad" />
+                                }
+                                label="Sleep Status"
+                                />
+                        </FormGroup>
+                        <Box sx={{ minWidth: 100}} className="selectBox" borderColor={"white"}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label" sx={{color:"white"}}>Select date range</InputLabel>
+                                <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={dateRange}
+                                label="Recent Sleep Data"
+                                onChange={handleChange}
+                                >
+                                <MenuItem value={1}>1</MenuItem>
+                                <MenuItem value={7}>7</MenuItem>
+                                <MenuItem value={14}>14</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </ThemeProvider>
+                </div>
+                <div className='sleepRingLegend'>
+                    <svg className='sleepRingLegendSvg' ref={svgLegendRef} width={200} height={100}></svg>
+                </div>
+                <svg className="sleepRingSvg" ref={svgRef} width={width} height={height}></svg>
             </div>
-            <svg className="sleepRingSvg" ref={svgRef} width={width} height={height}></svg>
             <LineChart />
         </div>
     );
