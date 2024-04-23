@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import * as d3 from "d3";
 import NationalBarChart from "../nationalBarChart/NationalBarChart";
+import StressScatterPlotChart from "../stressScatterPlotChart/StressScatterPlotChart";
+import StressScatterPlotAvgChart from "../stressScatterPlotChart/StressScatterPlotAvgChart";
 import "./LeftVizPage.css";
 
 const LeftVizPage = ({value,progress}) => {
@@ -16,11 +18,12 @@ const LeftVizPage = ({value,progress}) => {
 
     return (
         <div className="leftVizContainer">
-            {value === 0 && 
-                <div style={{opacity: opacity}}> 
+            {value === 0 &&
+                <div style={{opacity: opacity}}>
                     <NationalBarChart/>
                 </div>}
-                {value === 1 && <img src={`${process.env.PUBLIC_URL}/images/tmpImage.png`} alt="SlumberStats" className="tmpImage"/>}
+                {value === 1 && <StressScatterPlotChart/>}
+                {value === 2 && <StressScatterPlotAvgChart/>}
         </div>
     );
 }
