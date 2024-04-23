@@ -17,10 +17,10 @@ const SleepRing = () => {
     const svgRef = useRef();
     const [jsonData, setJsonData] = useState(null);
     const [checked, setChecked] = useState(true);
+    const [dateRange, setDateRange] = useState(7);
+    var selectedIdx = null;
     const width=800;
     const height=800;
-
-    const [dateRange, setDateRange] = useState(7);
 
     const handleChange = (event) => {
         setDateRange(event.target.value);
@@ -113,6 +113,18 @@ const SleepRing = () => {
                 .attr('fill', backgroundColor)
                 .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
+            // entire sleep ring
+            var sAngle = angleScale(oneDay[0].starttime);
+            var eAngle = angleScale(oneDay[oneDay.length-1].endtime);
+            if (sAngle > eAngle) {
+                eAngle += 2 * Math.PI;
+            }
+            const entireArc = d3.arc()
+                .innerRadius(innerRadius)
+                .outerRadius(outerRadius)
+                .startAngle(sAngle)
+                .endAngle(eAngle);
+
             oneDay.forEach(record => {
                 var startAngle = angleScale(record.starttime);
                 var endAngle = angleScale(record.endtime);
@@ -132,8 +144,26 @@ const SleepRing = () => {
                     .attr("border", "1px solid white")
                     .attr('transform', `translate(${width / 2}, ${height / 2})`) // move the center of the circle to the center of the svg
                     .on("click", function() {
-                        sessionStorage.setItem("curDateIdx", i+jsonData.length-dateRange+3);
-                        window.dispatchEvent(new Event('storage'));
+                        if (selectedIdx === i) {
+                            console.log("click the same ring");
+                            svg.selectAll('.highlightRing').remove();// remove the highlight effect
+                            selectedIdx = null;
+                            sessionStorage.removeItem("curDateIdx");
+                            window.dispatchEvent(new Event('storage'));
+                        } else {
+                            sessionStorage.setItem("curDateIdx", i+jsonData.length-dateRange+3);
+                            window.dispatchEvent(new Event('storage'));
+                            selectedIdx = i;
+                            // highlight effect
+                            svg.selectAll('.highlightRing').remove();
+                            svg.append('path')
+                                .attr("class", "highlightRing")
+                                .attr('d', entireArc)
+                                .attr('fill', 'none')
+                                .attr('stroke', '#003566')
+                                .attr('stroke-width', 3)
+                                .attr('transform', `translate(${width / 2}, ${height / 2})`);
+                        }                        
                     });
                 })
             // if (!checked) {
