@@ -6,6 +6,7 @@ import StressScatterPlotAvgChart from "../stressScatterPlotChart/StressScatterPl
 import "./LeftVizPage.css";
 import BoxPlot from "../boxPlot/BoxPlot";
 import PhoneChart from "../PhoneChart/PhoneChart";
+import SleepApp from "./sleepapp.png"
 
 const LeftVizPage = ({value,progress}) => {
     const [opacity, setOpacity] = useState(1);
@@ -24,7 +25,7 @@ const LeftVizPage = ({value,progress}) => {
                 <div style={{opacity: opacity}}>
                     <NationalBarChart/>
                 </div>}
-            {value === 1 && null} {/* Sleep Apps */}
+            {value === 1 && <img src={SleepApp} alt="Sleep Apps" style={{ display: 'flex', width: '80%', height: '90vh', justifyContent: 'center', alignItems: 'center'}} />}
             {value === 2 && null} {/* Factor correlation? */}
             {value === 3 && <div style={{opacity: opacity}}>
                 <StressScatterPlotChart/>
