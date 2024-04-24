@@ -31,7 +31,7 @@ const StickyLeftScrollama = (props) => {
           onStepEnter={handleStepEnter}
           progress
           onStepProgress={handleStepProgress}
-          offset={0.4}
+          offset={0.6}
           // debug
           >
           {dataset.steps.map(value => {

@@ -12,6 +12,7 @@ import IntroScrollama from './components/introScrollama/IntroScrollama.js';
 import SnapScroll from './components/scrollama/SnapScroll.js';
 import StressScatterPlotChart from './components/stressScatterPlotChart/StressScatterPlotChart.js';
 
+
 function App() {
   useEffect(() => {
     const handleBeforeUnload = () => {
@@ -47,8 +48,9 @@ function App() {
       {/* // Interactive Dashboard */}
 
       {/* // Working*/}
-      <SleepRing />
       <StickyScrollama />
+      <SleepRing />
+      
 
       {/* // Conclusion */}
     </div>

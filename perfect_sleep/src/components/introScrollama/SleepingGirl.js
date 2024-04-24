@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import * as d3 from "d3";
 import Component1 from "./NarrativeComponent/Component1";
+import BoxPlot from "../boxPlot/BoxPlot";
 
 const Component2 = () => {
     return (
@@ -36,7 +37,9 @@ const SleepingGirl = (props) => {
 
     return (
         <div className="sleepGirlContainer">
-            {index === 0 ? <Component1 avgSleep={avgSleep}/> : <Component2/>}
+            {index===0 && <Component1 />}
+            {index===1 && <Component2 />}
+            {index===2 && <div><h1>Component3</h1></div>}
         </div>
     );
 }

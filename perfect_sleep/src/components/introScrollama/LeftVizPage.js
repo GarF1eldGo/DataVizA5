@@ -4,6 +4,7 @@ import NationalBarChart from "../nationalBarChart/NationalBarChart";
 import StressScatterPlotChart from "../stressScatterPlotChart/StressScatterPlotChart";
 import StressScatterPlotAvgChart from "../stressScatterPlotChart/StressScatterPlotAvgChart";
 import "./LeftVizPage.css";
+import BoxPlot from "../boxPlot/BoxPlot";
 
 const LeftVizPage = ({value,progress}) => {
     const [opacity, setOpacity] = useState(1);
@@ -23,7 +24,7 @@ const LeftVizPage = ({value,progress}) => {
                     <NationalBarChart/>
                 </div>}
                 {value === 1 && <StressScatterPlotChart/>}
-                {value === 2 && <StressScatterPlotAvgChart/>}
+                {value === 2 && <BoxPlot />}
         </div>
     );
 }

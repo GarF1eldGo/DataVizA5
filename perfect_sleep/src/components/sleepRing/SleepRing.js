@@ -127,6 +127,9 @@ const SleepRing = () => {
                 .startAngle(sAngle)
                 .endAngle(eAngle);
 
+            var preEndAngle = null;
+            var preValue = null;
+
             oneDay.forEach(record => {
                 var startAngle = angleScale(record.starttime);
                 var endAngle = angleScale(record.endtime);
@@ -134,6 +137,48 @@ const SleepRing = () => {
                 if (startAngle > endAngle) {
                     endAngle += 2 * Math.PI;
                 }
+
+                if (preEndAngle !== null) {
+                    preEndAngle -= 0.01;
+                    var tmpStart = startAngle+0.01;
+                    if (preEndAngle > startAngle+0.01) {
+                        tmpStart += 2 * Math.PI;
+                    }
+                    const preArc = d3.arc()
+                        .innerRadius(innerRadius)
+                        .outerRadius(outerRadius)
+                        .startAngle(preEndAngle)
+                        .endAngle(tmpStart);
+
+                    svg.append('path')
+                        .attr('d', preArc)
+                        .attr('fill', colorScale(preValue))
+                        .attr('transform', `translate(${width / 2}, ${height / 2})`)
+                        .on("click", function() {
+                            if (selectedIdx === i) {
+                                svg.selectAll('.highlightRing').remove();// remove the highlight effect
+                                selectedIdx = null;
+                                sessionStorage.removeItem("curDateIdx");
+                                window.dispatchEvent(new Event('storage'));
+                            } else {
+                                sessionStorage.setItem("curDateIdx", i+jsonData.length-dateRange+3);// My data missing 3 days sleep data
+                                window.dispatchEvent(new Event('storage'));
+                                selectedIdx = i;
+                                // highlight effect
+                                svg.selectAll('.highlightRing').remove();
+                                svg.append('path')
+                                    .attr("class", "highlightRing")
+                                    .attr('d', entireArc)
+                                    .attr('fill', 'none')
+                                    .attr('stroke', '#003566')
+                                    .attr('stroke-width', 3)
+                                    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+                            }                        
+                        });
+                }
+                preEndAngle = endAngle;
+                preValue = record.value;
+
                 const arc = d3.arc()
                     .innerRadius(innerRadius)
                     .outerRadius(outerRadius)
@@ -143,11 +188,9 @@ const SleepRing = () => {
                 svg.append('path')
                     .attr('d', arc)
                     .attr('fill', colorScale(record.value))
-                    .attr("border", "1px solid white")
                     .attr('transform', `translate(${width / 2}, ${height / 2})`) // move the center of the circle to the center of the svg
                     .on("click", function() {
                         if (selectedIdx === i) {
-                            console.log("click the same ring");
                             svg.selectAll('.highlightRing').remove();// remove the highlight effect
                             selectedIdx = null;
                             sessionStorage.removeItem("curDateIdx");
@@ -229,7 +272,7 @@ const SleepRing = () => {
 
         // remove the previous legend
         svg.selectAll('g').remove();
-        
+
         var colorDomain = ['Awake', 'REM',
             'Core', 'Deep'];
         var colorScale = d3.scaleOrdinal()

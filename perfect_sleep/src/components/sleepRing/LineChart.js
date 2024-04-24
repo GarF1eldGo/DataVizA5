@@ -55,6 +55,7 @@ const LineChart = () => {
 
         // remove existing svg elements
         svg.selectAll("g").remove();
+        svg.selectAll("text").remove();
         
         var x = d3.scaleTime()
             .domain(d3.extent(data, function(d) { return parseDate(d.date); }))
@@ -111,7 +112,7 @@ const LineChart = () => {
             .attr("stroke-width", 1.5)
             .merge(path) 
             .transition() 
-            .duration(500)
+            .duration(750)
             .attr("d", d3.line()
                 .x(function(d) { return x(parseDate(d.date)) })
                 .y(function(d) { return y(+d.stress) })
@@ -137,7 +138,7 @@ const LineChart = () => {
                     .attr("cy", function(d) { return y(+d.stress) }))
                   .call(enter => enter.transition(t)
                     .attr("cx", function(d) { return x(parseDate(d.date)) })
-                    .attr("r", 3),
+                    .attr("r", 5),
                 update => update
                     .attr("cy", function(d) { return y(+d.stress) }))
                   .call(update => update.transition(t)
@@ -151,6 +152,9 @@ const LineChart = () => {
                   .call(exit => exit.transition(t)
                     .remove())
             );
+
+        // bring the circles to the front
+        svg.selectAll(".myCircles").raise();
     }
 
     const drawHeatMap = () => {
@@ -173,6 +177,9 @@ const LineChart = () => {
         const myColor = d3.scaleLinear()
             .range(["white", "#69b3a2"])
             .domain([0,3])
+        const myColor2 = d3.scaleLinear()
+            .range(["white", "#69b3a2"])
+            .domain([0,1])
 
         const bandwidth = (width - margin.left - margin.right) / data.length;
 
@@ -236,7 +243,7 @@ const LineChart = () => {
                     .attr("y", bandwidth+20)
                     .attr("width", bandwidth)
                     .attr("height", bandwidth)
-                    .style("fill", d => myColor(d.alcohol))
+                    .style("fill", d => myColor2(d.alcohol))
                     .attr("opacity", 1)
                     .call(enter => enter.transition(t)
                         .attr("opacity", 1) 
