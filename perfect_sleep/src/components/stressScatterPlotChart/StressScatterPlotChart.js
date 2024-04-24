@@ -141,6 +141,14 @@ const StressScatterPlotChart = () => {
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text("Quality of Sleep");
+
+
+      // fade in effect
+      svg1.style("opacity", 0);
+      svg2.style("opacity", 0);
+
+      svg1.transition().duration(1000).style("opacity", 1);
+      svg2.transition().duration(1000).style("opacity", 1);
   }, [data]);
 
   return (

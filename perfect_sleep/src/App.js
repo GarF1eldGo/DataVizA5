@@ -49,7 +49,7 @@ function App() {
       {/* // Interactive Dashboard */}
 
       {/* // Working*/}
-      <StickyScrollama />
+      {/* <StickyScrollama /> */}
       <SleepRing />
       
 

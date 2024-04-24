@@ -300,12 +300,34 @@ const SleepRing = () => {
                 .text(colorDomain[i])
                 .attr('fill', 'white');
         }
-        var y=0;
-        var x=80;
+        y=0;
+        x=80;
         colorDomain=["Weekday", "Weekend"];
         colorScale = d3.scaleOrdinal()
             .domain(colorDomain)
             .range(["#ffcdb2", "#ffb4a2"]);
+
+        for(var i=0; i<colorDomain.length; i++) {
+            var tgrp = svg.append('g')
+                .attr('transform', `translate(${x},${y + i*20})`);
+            tgrp.append('rect')
+                .attr('width', 10)
+                .attr('height', 10)
+                .attr('fill', colorScale(colorDomain[i]));
+
+            tgrp.append('text')
+                .attr('x', 15)
+                .attr('y', 10)
+                .text(colorDomain[i])
+                .attr('fill', 'white');
+        }
+
+        x=180;
+        y=0
+        colorDomain = ['Yes', 'No'];
+        colorScale = d3.scaleOrdinal()
+            .domain(colorDomain)
+            .range(["#69b3a2", "white"]);
 
         for(var i=0; i<colorDomain.length; i++) {
             var tgrp = svg.append('g')
@@ -341,43 +363,46 @@ const SleepRing = () => {
     }, [jsonData, dateRange, checked]);
 
     return (
-        <div className="sleepRingContainer">
-            <div className="sleepRingPart">
-                <div className="controllerContainer">
-                    <ThemeProvider theme={darkTheme}>
-                        <CssBaseline />
-                        <FormGroup>
-                            <FormControlLabel
-                                control={
-                                    <Switch checked={checked} onChange={handleCheckChange} name="gilad" />
-                                }
-                                label="Sleep Status"
-                                />
-                        </FormGroup>
-                        <Box sx={{ minWidth: 100}} className="selectBox" borderColor={"white"}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label" sx={{color:"white"}}>Select date range</InputLabel>
-                                <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={dateRange}
-                                label="Recent Sleep Data"
-                                onChange={handleChange}
-                                >
-                                <MenuItem value={1}>1</MenuItem>
-                                <MenuItem value={7}>7</MenuItem>
-                                <MenuItem value={14}>14</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Box>
-                    </ThemeProvider>
+        <div className='dashboardContainer'>
+            <div className="barGradient"></div>
+            <div className="sleepRingContainer">
+                <div className="sleepRingPart">
+                    <div className="controllerContainer">
+                        <ThemeProvider theme={darkTheme}>
+                            <CssBaseline />
+                            <FormGroup>
+                                <FormControlLabel
+                                    control={
+                                        <Switch checked={checked} onChange={handleCheckChange} name="gilad" />
+                                    }
+                                    label="Sleep Status"
+                                    />
+                            </FormGroup>
+                            <Box sx={{ minWidth: 100}} className="selectBox" borderColor={"white"}>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label" sx={{color:"white"}}>Select date range</InputLabel>
+                                    <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={dateRange}
+                                    label="Recent Sleep Data"
+                                    onChange={handleChange}
+                                    >
+                                    <MenuItem value={1}>1</MenuItem>
+                                    <MenuItem value={7}>7</MenuItem>
+                                    <MenuItem value={14}>14</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
+                        </ThemeProvider>
+                    </div>
+                    <div className='sleepRingLegend'>
+                        <svg className='sleepRingLegendSvg' ref={svgLegendRef} width={250} height={100}></svg>
+                    </div>
+                    <svg className="sleepRingSvg" ref={svgRef} width={width} height={height}></svg>
                 </div>
-                <div className='sleepRingLegend'>
-                    <svg className='sleepRingLegendSvg' ref={svgLegendRef} width={200} height={100}></svg>
-                </div>
-                <svg className="sleepRingSvg" ref={svgRef} width={width} height={height}></svg>
+                <LineChart />
             </div>
-            <LineChart />
         </div>
     );
 

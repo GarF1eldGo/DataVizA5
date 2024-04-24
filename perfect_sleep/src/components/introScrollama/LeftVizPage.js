@@ -12,7 +12,7 @@ const LeftVizPage = ({value,progress}) => {
 
     useEffect(() => {
         if (progress >= 0.7) {
-            setOpacity((1-progress)/0.3);
+            setOpacity((1-progress+0.03)/0.3);
         } else {
             setOpacity(1);
         }
@@ -26,9 +26,15 @@ const LeftVizPage = ({value,progress}) => {
                 </div>}
             {value === 1 && null} {/* Sleep Apps */}
             {value === 2 && null} {/* Factor correlation? */}
-            {value === 3 && <StressScatterPlotChart/>}
-            {value === 4 && <BoxPlot />}
-            {value === 5 && <PhoneChart />}
+            {value === 3 && <div style={{opacity: opacity}}>
+                <StressScatterPlotChart/>
+            </div>}
+            {value === 4 && <div style={{opacity: opacity}}>
+                <BoxPlot />
+            </div>}
+            {value === 5 &&  <div style={{opacity: opacity}}>
+                <PhoneChart />
+            </div>}
         </div>
     );
 }

@@ -5,7 +5,7 @@ import './LineChart.css';
 const LineChart = () => {
     const svgRef = useRef();
     const svgRefHeatmap = useRef();
-    const svgRefHeatmapConsumption = useRef();
+    const svgLegendRef = useRef();
     const [jsonData, setJsonData] = useState(null);
     const [curDateIdx, setCurDateIdx] = useState(null);
     const width = 690;
@@ -36,7 +36,6 @@ const LineChart = () => {
         return d3.timeParse("%Y-%m-%d")(dateStr);
     }
 
-    
     const drawLineChart = () => {
         if (!jsonData) return;
         
@@ -160,7 +159,7 @@ const LineChart = () => {
     const drawHeatMap = () => {
         const svg = d3.select(svgRefHeatmap.current);
         const curDate = curDateIdx ? parseDate(jsonData[curDateIdx].date) : null;
-        var data = null;
+        var data=null;
 
         // Time Complexity: O(n)!!!. Could be optimized to O(1) by storing the data in a map
         if (curDate) {
@@ -176,7 +175,7 @@ const LineChart = () => {
 
         const myColor = d3.scaleLinear()
             .range(["white", "#69b3a2"])
-            .domain([0,3])
+            .domain([0,1])
         const myColor2 = d3.scaleLinear()
             .range(["white", "#69b3a2"])
             .domain([0,1])
@@ -209,7 +208,8 @@ const LineChart = () => {
 
         const t = svg.transition()
             .duration(750);
-        const heatMapPhone = svg.selectAll(".heatmap")
+
+        svg.selectAll(".heatmap")
             .data(data, d => d.date)
             .join(
                 enter => enter.append("rect")
@@ -234,7 +234,8 @@ const LineChart = () => {
                         .attr("opacity", 0) 
                         .remove()
                     ));
-        const heatMapAlcohol = svg.selectAll(".heatmapAlcohol")
+
+        svg.selectAll(".heatmapAlcohol")
             .data(data, d => d.date)
             .join(
                 enter => enter.append("rect")
@@ -262,6 +263,32 @@ const LineChart = () => {
                     ));
     }
 
+    const drawLegend = () => {
+        const svg = d3.select(svgLegendRef.current);
+        svg.selectAll('.legend').remove();
+
+        var colorDomain = ['Yes', 'No'];
+        var colorScale = d3.scaleOrdinal()
+            .domain(colorDomain)
+            .range(["#69b3a2", "white"]);
+
+        for(var i=0; i<colorDomain.length; i++) {
+            var tgrp = svg.append('g')
+                .attr("class", "legend")
+                .attr('transform', `translate(${0+30},${0 + i*20})`);
+            tgrp.append('rect')
+                .attr('width', 10)
+                .attr('height', 10)
+                .attr('fill', colorScale(colorDomain[i]));
+
+            tgrp.append('text')
+                .attr('x', 15)
+                .attr('y', 10)
+                .text(colorDomain[i])
+                .attr('fill', 'white');
+        }
+    }
+
     const handleStorageChange = () => {
         var idx = sessionStorage.getItem("curDateIdx");
         if (idx) {
@@ -286,13 +313,19 @@ const LineChart = () => {
         if (jsonData) {
             drawLineChart();
             drawHeatMap();
+            // drawLegend();
         }
     }, [jsonData, curDateIdx]);
 
     return (
-        <div className="lineChart">
-            <svg ref={svgRef} width={width} height={height}></svg>
-            <svg ref={svgRefHeatmap} width={width} height={height-200}></svg>
+        <div className="lineChartContainer">
+            <div className="lineChart">
+                <svg ref={svgRef} width={width} height={height}></svg>
+                <svg ref={svgRefHeatmap} width={width} height={height-200}></svg>
+            </div>
+            <div className='heatmapLegend'>
+                <svg className='heatmapLegendSvg' ref={svgLegendRef} width={100} height={100}></svg>
+            </div>
         </div>
     );
 }

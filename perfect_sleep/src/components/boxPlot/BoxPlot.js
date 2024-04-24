@@ -181,6 +181,10 @@ const BoxPlot = () => {
                 .attr("fill", "white")
                 .attr("stroke", "white");
         }
+
+        // fade in effect
+        svg.style("opacity", 0);
+        svg.transition().duration(1000).style("opacity", 1);
     }
 
     useEffect(() => {
