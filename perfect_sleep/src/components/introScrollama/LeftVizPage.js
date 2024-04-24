@@ -23,8 +23,11 @@ const LeftVizPage = ({value,progress}) => {
                 <div style={{opacity: opacity}}>
                     <NationalBarChart/>
                 </div>}
-                {value === 1 && <StressScatterPlotChart/>}
-                {value === 2 && <BoxPlot />}
+            {value === 1 && null} {/* Sleep Apps */}
+            {value === 2 && null} {/* Factor correlation? */}
+            {value === 3 && <StressScatterPlotChart/>}
+            {value === 4 && <BoxPlot />}
+            {value === 5 && null} {/* Phone Usage Chart */}
         </div>
     );
 }

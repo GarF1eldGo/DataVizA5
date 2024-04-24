@@ -4,6 +4,9 @@ import Component1 from "./NarrativeComponent/Component1";
 import BoxPlot from "../boxPlot/BoxPlot";
 import Component2 from "./NarrativeComponent/Component2";
 import Component3 from "./NarrativeComponent/Component3";
+import StressComponent from "./NarrativeComponent/StressComponent";
+import Alcohol from "./NarrativeComponent/Alcohol";
+import PhoneUsage from "./NarrativeComponent/PhoneUsage";
 
 const SleepingGirl = (props) => {
     const [avgSleep, setAvgSleep] = useState(0);
@@ -34,6 +37,9 @@ const SleepingGirl = (props) => {
             {index === 0 && <Component1 avgSleep={avgSleep}/>}
             {index === 1 && <Component2/>}
             {index === 2 && <Component3/>}
+            {index === 3 && <StressComponent/>}
+            {index === 4 && <Alcohol/>}
+            {index === 5 && <PhoneUsage/>}
         </div>
     );
 }
