@@ -5,6 +5,7 @@ import StressScatterPlotChart from "../stressScatterPlotChart/StressScatterPlotC
 import StressScatterPlotAvgChart from "../stressScatterPlotChart/StressScatterPlotAvgChart";
 import "./LeftVizPage.css";
 import BoxPlot from "../boxPlot/BoxPlot";
+import PhoneChart from "../PhoneChart/PhoneChart";
 
 const LeftVizPage = ({value,progress}) => {
     const [opacity, setOpacity] = useState(1);
@@ -27,7 +28,7 @@ const LeftVizPage = ({value,progress}) => {
             {value === 2 && null} {/* Factor correlation? */}
             {value === 3 && <StressScatterPlotChart/>}
             {value === 4 && <BoxPlot />}
-            {value === 5 && null} {/* Phone Usage Chart */}
+            {value === 5 && <PhoneChart />}
         </div>
     );
 }
