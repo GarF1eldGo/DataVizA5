@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import * as d3 from "d3";
 import Component1 from "./NarrativeComponent/Component1";
+<<<<<<< HEAD
 import BoxPlot from "../boxPlot/BoxPlot";
 
 const Component2 = () => {
@@ -10,6 +11,10 @@ const Component2 = () => {
         </div>
     );
 }
+=======
+import Component2 from "./NarrativeComponent/Component2";
+import Component3 from "./NarrativeComponent/Component3";
+>>>>>>> 4b62808 (scroll)
 
 const SleepingGirl = (props) => {
     const [avgSleep, setAvgSleep] = useState(0);
@@ -37,9 +42,9 @@ const SleepingGirl = (props) => {
 
     return (
         <div className="sleepGirlContainer">
-            {index===0 && <Component1 />}
-            {index===1 && <Component2 />}
-            {index===2 && <div><h1>Component3</h1></div>}
+            {index === 0 && <Component1 avgSleep={avgSleep}/>}
+            {index === 1 && <Component2/>}
+            {index === 2 && <Component3/>}
         </div>
     );
 }

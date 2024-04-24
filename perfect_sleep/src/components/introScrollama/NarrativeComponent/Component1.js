@@ -52,7 +52,7 @@ const Component1 = ({avgSleep}) => {
     return (
         <div className="component1Container">
             <div className="imgContainer">
-                <h1 id="girlNarrative">You sleep <span style={{ color: hintColor }}>{betterPercent}%</span> better than the average US citizen. {"\n\n"} Keep reading to see how you can improve this stat!</h1>
+                <h1 id="girlNarrative">You sleep better than <span style={{ color: hintColor }}>{betterPercent}%</span> of US citizens. {"\n\n"} Keep reading to see how you can improve this stat!</h1>
                 <SleepSvg className="sleepSvg"/>
             </div>
         </div>
