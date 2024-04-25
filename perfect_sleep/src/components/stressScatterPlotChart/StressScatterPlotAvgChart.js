@@ -58,7 +58,7 @@ const StressScatterPlotAvgChart = () => {
   useEffect(() => {
     if (!data) return;
 
-    const margin = { top: 10, right: 10, bottom: 40, left: 40 };
+    const margin = { top: 10, right: 10, bottom: 40, left: 50 };
     const width = 500 - margin.left - margin.right;
     const height = 350 - margin.top - margin.bottom;
 
@@ -167,7 +167,7 @@ const StressScatterPlotAvgChart = () => {
   }, [data]);
 
   return (
-      <div>
+      <div style={{width: '550px'}}>
         <svg ref={svgRef1} />
         <svg ref={svgRef2} />
       </div>
