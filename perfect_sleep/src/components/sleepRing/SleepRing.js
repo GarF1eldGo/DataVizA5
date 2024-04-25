@@ -26,10 +26,16 @@ const SleepRing = () => {
 
     const handleChange = (event) => {
         setDateRange(event.target.value);
+        selectedIdx = null;
+        sessionStorage.removeItem("curDateIdx");
+        window.dispatchEvent(new Event('storage'));
     };
 
     const handleCheckChange = (event) => {
         setChecked(event.target.checked);
+        selectedIdx = null;
+        sessionStorage.removeItem("curDateIdx");
+        window.dispatchEvent(new Event('storage'));
     };
 
     const fetchData = async () => {
@@ -251,7 +257,7 @@ const SleepRing = () => {
             .attr("opacity", 0.8)
             .attr('stroke-width', 1);
         clockFace.selectAll(".hour-label")
-            .data(['0am','6am','0pm','6pm'])
+            .data(['12am','6am','12pm','6pm'])
             .enter()
             .append("text")
             .attr("class", "hour-label")
@@ -264,7 +270,6 @@ const SleepRing = () => {
                 (d,i) => -clockScaleRadius * Math.cos(twentySacle(indexMap[i]) * radians) + 6
             )
             .text(d => d);  
-
     };
 
     const colorLegend = () => {

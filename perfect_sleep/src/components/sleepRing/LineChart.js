@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from "react";
 import * as d3 from "d3";
+import { timeFormat } from "d3";
 import './LineChart.css';
 
 const LineChart = () => {
@@ -65,17 +66,18 @@ const LineChart = () => {
             .range([ height-margin.bottom, margin.top ]);
         
         // draw axis
+        const customTimeFormat = timeFormat('%m-%d');
         if (curDate) {
             svg.append("g")
                 .attr("transform", `translate(0, ${height - margin.bottom + 15})`)
-                .call(d3.axisBottom(x).ticks(d3.timeDay));
+                .call(d3.axisBottom(x).ticks(d3.timeDay).tickFormat(customTimeFormat));
             svg.append("g")
                 .attr("transform", `translate(${margin.left - 10}, 0)`)
                 .call(d3.axisLeft(y).tickValues([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
         }else{
             svg.append("g")
                 .attr("transform", `translate(0, ${height - margin.bottom + 15})`)
-                .call(d3.axisBottom(x));
+                .call(d3.axisBottom(x).ticks(3).tickFormat(customTimeFormat));
             svg.append("g")
                 .attr("transform", `translate(${margin.left - 10}, 0)`)
                 .call(d3.axisLeft(y));
