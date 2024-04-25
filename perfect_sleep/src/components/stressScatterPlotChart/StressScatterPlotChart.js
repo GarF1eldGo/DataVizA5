@@ -50,11 +50,11 @@ const StressScatterPlotChart = () => {
         .range([0, width]);
 
     const y1 = d3.scaleLinear()
-        .domain([5, d3.max(data, d => +d['Sleep Duration'])])
+        .domain([0, d3.max(data, d => +d['Sleep Duration'])])
         .range([height, 0]);
 
     const y2 = d3.scaleLinear()
-        .domain([3, d3.max(data, d => +d['Quality of Sleep'])])
+        .domain([0, d3.max(data, d => +d['Quality of Sleep'])])
         .range([height, 0]);
 
     const sizeQuality = d3.scaleLinear()

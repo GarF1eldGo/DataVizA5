@@ -30,9 +30,12 @@ const LeftVizPage = ({value,progress}) => {
                 <StressScatterPlotChart/>
             </div>}
             {value === 4 && <div style={{opacity: opacity}}>
+                <StressScatterPlotAvgChart/>
+            </div>}
+            {value === 5 && <div style={{opacity: opacity}}>
                 <BoxPlot />
             </div>}
-            {value === 5 &&  <div style={{opacity: opacity}}>
+            {value === 6 &&  <div style={{opacity: opacity}}>
                 <PhoneChart />
             </div>}
         </div>
