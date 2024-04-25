@@ -101,7 +101,7 @@ const StressScatterPlotChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y1(+d['Sleep Duration']))
         .attr("r", d => sizeDuration(d.countDuration))
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     g2.selectAll(".dot")
         .data(data)
@@ -111,7 +111,7 @@ const StressScatterPlotChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y2(+d['Quality of Sleep']))
         .attr("r", d => sizeQuality(d.countQuality))
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     // Add x-axis label for both SVGs
     [g1, g2].forEach(g => {

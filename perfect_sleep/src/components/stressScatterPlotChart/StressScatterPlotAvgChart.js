@@ -127,7 +127,7 @@ const StressScatterPlotAvgChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y1(d.avgDuration))
         .attr("r", 5)
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     g2.selectAll(".dot")
         .data(data)
@@ -137,7 +137,7 @@ const StressScatterPlotAvgChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y2(d.avgQuality))
         .attr("r", 5)
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     [g1, g2].forEach(g => {
       g.append("text")

@@ -25,7 +25,7 @@ const LeftVizPage = ({value,progress}) => {
                 <div style={{opacity: opacity}}>
                     <NationalBarChart/>
                 </div>}
-            {value === 1 && <img src={SleepApp} alt="Sleep Apps" style={{ display: 'flex', width: '80%', height: '90vh', justifyContent: 'center', alignItems: 'center'}} />}
+            {value === 1 && <img src={SleepApp} alt="Sleep Apps" className="sleepimg"/>}
             {value === 2 && null} {/* Factor correlation? */}
             {value === 3 && <div style={{opacity: opacity}}>
                 <StressScatterPlotChart/>

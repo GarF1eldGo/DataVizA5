@@ -64,7 +64,7 @@ const BarChart = () => {
       .attr("class", "mybar")
       .attr("x", d => x(d.hour))
       .attr("width", x.bandwidth())
-      .attr("fill", "#69b3a2")
+      .attr("fill", "#abd9e9")
       // no bar at the beginning thus:
       .attr('height', d => 0)
       .attr('y', d => y(0))
@@ -72,9 +72,9 @@ const BarChart = () => {
     // highlight the bar with the average sleep
     if (avgSleep) {
       svg.selectAll(".mybar")
-        .attr("fill", "#69b3a2")
+        .attr("fill", "#abd9e9")
         .filter(d => d.hour === avgSleep)
-        .attr("fill", "orange");
+        .attr("fill", "#ffd04a");
     }
 
     svg.selectAll(".mybar")
@@ -182,7 +182,7 @@ const BarChart = () => {
       .attr("class", "mybar")
       .attr("x", d => x(d.hour))
       .attr("width", x.bandwidth())
-      .attr("fill", "#8ae0fc")
+      .attr("fill", "#abd9e9")
       // no bar at the beginning thus:
       .attr('height', d => 0)
       .attr('y', d => y(0))
@@ -190,7 +190,7 @@ const BarChart = () => {
     // highlight the bar with the average sleep
     if (avgSleep) {
       svg.selectAll(".mybar")
-        .attr("fill", "#8ae0fc")
+        .attr("fill", "#abd9e9")
         .filter(d => d.hour === avgSleep)
         .attr("fill", "#ffd04a");
     }

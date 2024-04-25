@@ -4,10 +4,11 @@
 
 .dashboardContainer .barGradient{
   width: 100%;
-  height: 14vh;
+  height: 10vh;
   position: absolute;
-  background: linear-gradient(to bottom,  #261965,#221262, #131a41);
-  top: -14vh;
+  background: linear-gradient(to bottom,  #261965, #221262, #131a41);
+  opacity: 80%;
+  top: -10vh;
   z-index: 2;
 }
 
@@ -27,13 +28,13 @@
 
 .sleepRingContainer .sleepRingLegend {
   position: absolute;
-  top: -5%;
+  top: -4%;
   right: -13%;
 }
 
 .sleepRingContainer .controllerContainer {
   position: absolute;
-  top: -10%;
+  top: -6%;
   left: 0;
   display: flex;
   flex-direction: column;
