@@ -83,7 +83,7 @@ const SleepRing = () => {
         if (!checked) {
             colorScale = d3.scaleOrdinal()
                 .domain(colorDomain)
-                .range(["#d7191c","#fdae61","#72aae9","#abd9e9","#5874e9"]);
+                .range(["#c10f05","#c10f05","#5874e9","#5874e9","#5874e9"]);
         }
 
         // remove the previous rings
@@ -287,7 +287,7 @@ const SleepRing = () => {
             colorDomain = ['Awake', 'Asleep'];
             colorScale = d3.scaleOrdinal()
                 .domain(colorDomain)
-                .range(["#d7191c","#72aae9"]);
+                .range(["#c10f05","#5874e9"]);
         }
         var y=0;
         var x=0;

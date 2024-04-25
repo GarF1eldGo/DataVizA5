@@ -59,7 +59,7 @@ const Comparison = () => {
 
         var colorScale = d3.scaleOrdinal()
             .domain(colorDomain)
-            .range(["#d7191c","#fdae61","#ffffbf","#abd9e9","#2c7bb6"]);
+            .range(["#d7191c","#fdae61","#72aae9","#abd9e9","#5874e9"]);
 
         // remove the previous rings
         svg.selectAll('path').remove();
