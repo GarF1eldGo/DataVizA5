@@ -39,7 +39,7 @@ const Component1 = ({avgSleep}) => {
         tmpSum = tmpSum*100;
         setBetterPercent(tmpSum.toFixed(1));
         if (tmpSum > 50) {
-            setHintColor('#A1BE95');
+            setHintColor('#30a529');
         } else {
             setHintColor('#F96167');
         }

@@ -6,8 +6,14 @@
 }
 
 .sleepimg{
-    animation: fadeIn 1.5s;
-    width: 80%;
+    animation: fadeIn 3s;
+    width: 70%;
+    height: auto;
+}
+
+.dashboard{
+    animation: fadeIn 1s;
+    width: 100%;
     height: auto;
 }
 
@@ -17,14 +23,5 @@
     }
     100% {
         opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
     }
 }

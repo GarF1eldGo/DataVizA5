@@ -18,3 +18,8 @@
   font-size: 24px;
   color: #fff;
 }
+
+.text a {
+  color: #abd9e9;
+  text-decoration: none; /* Optional: Removes the underline from links */
+}

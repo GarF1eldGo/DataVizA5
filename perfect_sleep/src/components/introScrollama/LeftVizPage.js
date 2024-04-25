@@ -7,12 +7,13 @@ import "./LeftVizPage.css";
 import BoxPlot from "../boxPlot/BoxPlot";
 import PhoneChart from "../PhoneChart/PhoneChart";
 import SleepApp from "./sleepapp2.png"
+import Dashboard from "./dashboard.png"
 
 const LeftVizPage = ({value,progress}) => {
     const [opacity, setOpacity] = useState(1);
 
     useEffect(() => {
-        if (progress >= 0.7) {
+        if (progress >= 0.85) {
             setOpacity((1-progress+0.03)/0.3);
         } else {
             setOpacity(1);
@@ -26,7 +27,7 @@ const LeftVizPage = ({value,progress}) => {
                     <NationalBarChart/>
                 </div>}
             {value === 1 && <img src={SleepApp} alt="Sleep Apps" className="sleepimg"/>}
-            {value === 2 && null} {/* Factor correlation? */}
+            {value === 2 && <img src={Dashboard} alt="Dashboard" className="dashboard"/>} 
             {value === 3 && <div style={{opacity: opacity}}>
                 <StressScatterPlotChart/>
             </div>}

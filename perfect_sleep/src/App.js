@@ -12,7 +12,7 @@ import IntroScrollama from './components/introScrollama/IntroScrollama.js';
 import SnapScroll from './components/scrollama/SnapScroll.js';
 import StressScatterPlotChart from './components/stressScatterPlotChart/StressScatterPlotChart.js';
 import PhoneChart from './components/PhoneChart/PhoneChart.js';
-
+import Introduction from './components/Introduction/Introduction.js'
 
 function App() {
   useEffect(() => {
@@ -33,20 +33,7 @@ function App() {
       {/* // Introduction */}
       <SnapScroll components={[TitlePage, QuestionPage]} />
       <IntroScrollama />
-      
-      {/* // Sleep Apps Intro */}
-
-      {/* // Factors that Affect Sleep */}
-
-      {/* // Sleep Apps Intro */}
-
-      {/* // Stress */}
-
-      {/* // Consumption */}
-
-      {/* // Phone Usage */}
-
-      {/* // Interactive Dashboard */}
+      <Introduction />
 
       {/* // Working*/}
       {/* <StickyScrollama /> */}

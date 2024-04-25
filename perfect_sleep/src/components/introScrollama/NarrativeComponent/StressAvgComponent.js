@@ -5,11 +5,10 @@ const StressAvgComponent = () => {
     return (
         <div className="componentContainer">
             <div className="textBlock">
-                <h1 className="title">
-                    Stress Impact
-                </h1>
                 <p className="text">
-                    The introduction of a linear regression line makes this relationship clearer. As stress increases, both sleep duration and quality decrease. Our app includes stress tracking to help users understand how stress might be affecting their sleep. It also provides suggestions for practices like yoga, meditation that can improve mental health and sleep.
+                    Condenscing all the data points into the average and introducing a linear regression line further illuminates this relationship: stress is negatively correlated with sleep duration and quality.
+                    <br></br><br></br>
+                    Recognizing the significance of this relationship, we have integrated a stress tracking feature into our SlumberStats dashboard. This tool will not only heighten users' awareness of stress's effects on sleep but also encourage them to monitor and mitigate its impact on their rest.
                 </p>
             </div>
         </div>
