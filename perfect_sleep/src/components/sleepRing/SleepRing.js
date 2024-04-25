@@ -78,12 +78,12 @@ const SleepRing = () => {
 
         var colorScale = d3.scaleOrdinal()
             .domain(colorDomain)
-            .range(["#d7191c","#fdae61","#ffffbf","#abd9e9","#2c7bb6"]);
+            .range(["#d7191c","#fdae61","#72aae9","#abd9e9","#5874e9"]);
 
         if (!checked) {
             colorScale = d3.scaleOrdinal()
                 .domain(colorDomain)
-                .range(["#d7191c","#d7191c","#2c7bb6","#2c7bb6","#2c7bb6"]);
+                .range(["#d7191c","#fdae61","#72aae9","#abd9e9","#5874e9"]);
         }
 
         // remove the previous rings
@@ -278,16 +278,16 @@ const SleepRing = () => {
         // remove the previous legend
         svg.selectAll('g').remove();
 
-        var colorDomain = ['Awake', 'REM',
-            'Core', 'Deep'];
+        var colorDomain = ['Awake',
+            'Light', 'REM','Deep'];
         var colorScale = d3.scaleOrdinal()
             .domain(colorDomain)
-            .range(["#d7191c", "#ffffbf", "#abd9e9", "#2c7bb6"]);
+            .range(["#d7191c","#abd9e9","#72aae9","#5874e9"]);
         if (!checked) {
             colorDomain = ['Awake', 'Asleep'];
             colorScale = d3.scaleOrdinal()
                 .domain(colorDomain)
-                .range(["#d7191c","#2c7bb6","#2c7bb6","#2c7bb6"]);
+                .range(["#d7191c","#72aae9"]);
         }
         var y=0;
         var x=0;

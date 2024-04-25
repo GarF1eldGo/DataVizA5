@@ -41,7 +41,7 @@ const StressScatterPlotChart = () => {
   useEffect(() => {
     if (!data) return;
 
-    const margin = { top: 10, right: 10, bottom: 40, left: 40 };
+    const margin = { top: 10, right: 10, bottom: 40, left: 50 };
     const width = 500 - margin.left - margin.right;
     const height = 350 - margin.top - margin.bottom;
 
@@ -50,11 +50,11 @@ const StressScatterPlotChart = () => {
         .range([0, width]);
 
     const y1 = d3.scaleLinear()
-        .domain([5, d3.max(data, d => +d['Sleep Duration'])])
+        .domain([0, d3.max(data, d => +d['Sleep Duration'])])
         .range([height, 0]);
 
     const y2 = d3.scaleLinear()
-        .domain([3, d3.max(data, d => +d['Quality of Sleep'])])
+        .domain([0, d3.max(data, d => +d['Quality of Sleep'])])
         .range([height, 0]);
 
     const sizeQuality = d3.scaleLinear()
@@ -101,7 +101,7 @@ const StressScatterPlotChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y1(+d['Sleep Duration']))
         .attr("r", d => sizeDuration(d.countDuration))
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     g2.selectAll(".dot")
         .data(data)
@@ -111,7 +111,7 @@ const StressScatterPlotChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y2(+d['Quality of Sleep']))
         .attr("r", d => sizeQuality(d.countQuality))
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     // Add x-axis label for both SVGs
     [g1, g2].forEach(g => {
@@ -152,7 +152,7 @@ const StressScatterPlotChart = () => {
   }, [data]);
 
   return (
-      <div>
+      <div style={{width: '550px'}}>
         <svg ref={svgRef1} />
         <svg ref={svgRef2} />
       </div>

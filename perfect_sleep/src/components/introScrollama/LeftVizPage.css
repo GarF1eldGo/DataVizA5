@@ -1,5 +1,14 @@
-.leftVizContainer .tmpImage{
+.leftVizContainer {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Or any specific height as needed */
+}
+
+.sleepimg{
     animation: fadeIn 1.5s;
+    width: 80%;
+    height: auto;
 }
 
 @keyframes fadeIn {
@@ -8,5 +17,14 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }

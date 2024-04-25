@@ -58,7 +58,7 @@ const StressScatterPlotAvgChart = () => {
   useEffect(() => {
     if (!data) return;
 
-    const margin = { top: 10, right: 10, bottom: 40, left: 40 };
+    const margin = { top: 10, right: 10, bottom: 40, left: 50 };
     const width = 500 - margin.left - margin.right;
     const height = 350 - margin.top - margin.bottom;
 
@@ -127,7 +127,7 @@ const StressScatterPlotAvgChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y1(d.avgDuration))
         .attr("r", 5)
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     g2.selectAll(".dot")
         .data(data)
@@ -137,7 +137,7 @@ const StressScatterPlotAvgChart = () => {
         .attr("cx", d => x(d['Stress Level']))
         .attr("cy", d => y2(d.avgQuality))
         .attr("r", 5)
-        .style("fill", "#69b3a2");
+        .style("fill", "#abd9e9");
 
     [g1, g2].forEach(g => {
       g.append("text")
@@ -167,7 +167,7 @@ const StressScatterPlotAvgChart = () => {
   }, [data]);
 
   return (
-      <div>
+      <div style={{width: '550px'}}>
         <svg ref={svgRef1} />
         <svg ref={svgRef2} />
       </div>

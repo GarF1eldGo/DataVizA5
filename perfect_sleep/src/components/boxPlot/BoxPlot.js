@@ -144,7 +144,7 @@ const BoxPlot = () => {
             .attr("height", d => y(d.q1) - y(d.q3))
             .attr("width", boxWidth )
             .attr("stroke", "white")
-            .style("fill", "#69b3a2")
+            .style("fill", "#abd9e9")
 
         // Show the median
         svg.selectAll(".medianLines")

@@ -5,7 +5,7 @@ import './StickyLeftScrollama.css';
 const StickyLeftScrollama = (props) => {
   const [dataset, setDataset] = useState({
     data: 0,
-    steps: [0, 1, 2, 3, 4, 5],
+    steps: [0, 1, 2, 3, 4, 5, 6],
     progress: 0,
   });
   const LeftComponent = props.leftComponent;
@@ -24,10 +24,10 @@ const StickyLeftScrollama = (props) => {
       <div className="leftContainer">
         <LeftComponent value={dataset.data} progress={dataset.progress}/>
       </div>
-      
+
       <div className="scrollamaContainer">
-        <Scrollama 
-          className="scrollama" 
+        <Scrollama
+          className="scrollama"
           onStepEnter={handleStepEnter}
           progress
           onStepProgress={handleStepProgress}

@@ -109,7 +109,7 @@ const LineChart = () => {
             .append("path")
             .attr("class", "line")
             .attr("fill", "none")
-            .attr("stroke", "steelblue")
+            .attr("stroke", "#72aae9")
             .attr("stroke-width", 1.5)
             .merge(path) 
             .transition() 

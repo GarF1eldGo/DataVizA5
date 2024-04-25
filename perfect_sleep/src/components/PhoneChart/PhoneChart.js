@@ -76,7 +76,7 @@ const PhoneChart = () => {
         .attr('y', (d) => y(d[1]))
         .attr('width', x.bandwidth())
         .attr('height', (d) => height - y(d[1]))
-        .attr('fill', "#69b3a2");
+        .attr('fill', "#abd9e9");
 
     // Graph title
     svg.append('text')
