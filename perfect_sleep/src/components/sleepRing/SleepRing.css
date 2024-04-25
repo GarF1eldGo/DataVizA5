@@ -2,16 +2,6 @@
   position: relative;
 }
 
-.dashboardContainer .barGradient{
-  width: 100%;
-  height: 10vh;
-  position: absolute;
-  background: linear-gradient(to bottom,  #261965, #221262, #131a41);
-  opacity: 80%;
-  top: -10vh;
-  z-index: 2;
-}
-
 .dashboardContainer .sleepRingContainer {
   display: flex;
   justify-content: center;
