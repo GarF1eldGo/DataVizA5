@@ -8,9 +8,9 @@ const PhoneChart = () => {
     const svgRef2 = useRef();
     const containerRef = useRef();
     const [data, setData] = useState(null);
-  
+
     useEffect(() => {
-        fetch('/data/SleepStudyData.csv', {
+        fetch('./data/SleepStudyData.csv', {
             headers : {
                 'Content-Type': 'text/csv',
                 'Accept': 'text/csv'
@@ -43,8 +43,8 @@ const PhoneChart = () => {
         })
         .catch(error => console.error('There has been a problem with your fetch operation:', error));
     }, []);
-    
-  
+
+
     useEffect(() => {
 
     if (!data) return;
@@ -138,7 +138,7 @@ const PhoneChart = () => {
     svg.append("g")
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(x))
-        .selectAll("text") 
+        .selectAll("text")
         .style("font-size", "15px");
     */
 
@@ -201,15 +201,14 @@ const PhoneChart = () => {
     // fade in effect
     svg2.style('opacity', 0)
     svg2.transition().duration(1000).style('opacity', 1);
-      
+
   }, [data]);
-  
+
     return (
         <div>
           <svg ref={svgRef1} width={1500} height={1000}/>
         </div>
     );
 };
-  
+
   export default PhoneChart;
-  

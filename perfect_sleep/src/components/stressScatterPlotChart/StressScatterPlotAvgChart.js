@@ -27,7 +27,7 @@ const StressScatterPlotAvgChart = () => {
   }
 
   useEffect(() => {
-    fetch('/data/Sleep_health_and_lifestyle_dataset.csv', {
+    fetch('./data/Sleep_health_and_lifestyle_dataset.csv', {
       headers : {
         'Content-Type': 'text/csv',
         'Accept': 'text/csv'
