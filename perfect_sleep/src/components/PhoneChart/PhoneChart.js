@@ -202,7 +202,6 @@ const PhoneChart = () => {
     return (
         <div>
           <svg ref={svgRef1} width={1500} height={1000}/>
-          <svg ref={svgRef2} width={1000} height={1000}/>
         </div>
     );
 };
