@@ -62,7 +62,7 @@ const QuestionPage = () => {
                 }
                 }}
             error={error}
-            helperText={error ? "Please enter a positive integer less than 14 (we hope you are not sleeping more than 14 hours on average!)" : ""}
+            helperText={error ? "Please enter a positive number between 2 and 14 (we hope you are not sleeping less or more than that!)" : ""}
         />
     }
 
