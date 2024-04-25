@@ -24,10 +24,14 @@ const PhoneChart = () => {
             })
         .then(d3.csvParse)
         .then(data => {
+            // Check if data is empty
+            if (data.length === 0) {
+                throw new Error('No data fetched');
+            }
             // Calculate the counts of each "Quality of Sleep" and "Sleep Duration" value
             const countPhoneTime = d3.rollups(data, v => v.length, d => d['PhoneTime']);
             const countPhoneReach = d3.rollups(data, v => v.length, d => d['PhoneReach']);
-            const countMapTime= new Map(countPhoneTime);
+            const countMapTime = new Map(countPhoneTime);
             const countMapReach = new Map(countPhoneReach);
 
             // Add a new property to each data point for the count
@@ -62,17 +66,18 @@ const PhoneChart = () => {
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Aggregate data based on "PhoneTime" categories
+    const totalTiredness = d3.sum(data, d => +d['Tired']); // Total tiredness across all categories
     const aggregatedData1 = d3.rollup(
         data,
-        v => d3.sum(v, d => +d['Tired']), // Sum up the "Tired" values for each category
+        v => (d3.sum(v, d => +d['Tired']) / totalTiredness) * 100, // Calculate percentage of tiredness
         d => d.PhoneTime // Group by "PhoneTime" categories
     );
 
     // Aggregate data based on "PhoneReach" categories
     const aggregatedData2 = d3.rollup(
         data,
-        v => d3.sum(v, d => +d['Tired']), // Sum up the "Tired" values for each category
-        d => d.PhoneReach // Group by "PhoneTime" categories
+        v => (d3.sum(v, d => +d['Tired']) / totalTiredness) * 100, // Calculate percentage of tiredness
+        d => d.PhoneReach // Group by "PhoneReach" categories
     );
 
     console.log("Aggregated Data: ", aggregatedData1);
@@ -126,7 +131,7 @@ const PhoneChart = () => {
         .attr("dy", "12em")
         .style("text-anchor", "middle")
         .style("fill", "white")
-        .text("Total Tiredness");
+        .text("% Feeling Tired");
 
     // X axis yes or no labels
     /*
