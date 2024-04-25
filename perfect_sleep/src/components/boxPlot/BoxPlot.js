@@ -54,7 +54,7 @@ const BoxPlot = () => {
             }
 
 
-            setData([calculate(firstPart, "No drink"), calculate(secondPart, "Drink")]);
+            setData([calculate(firstPart, "No Alcohol Consumed"), calculate(secondPart, "Alcohol Consumed")]);
         })
         .catch(error => console.error('There has been a problem with your fetch operation:', error));
     };
@@ -69,7 +69,7 @@ const BoxPlot = () => {
         // Show the X scale
         var x = d3.scaleBand()
             .range([ margin.left, width-margin.bottom ])
-            .domain(["No drink", "Drink"])
+            .domain(["No Alcohol Consumed", "Alcohol Consumed"])
             .paddingInner(1)
             .paddingOuter(.5)
 
