@@ -6,7 +6,7 @@ import StressScatterPlotAvgChart from "../stressScatterPlotChart/StressScatterPl
 import "./LeftVizPage.css";
 import BoxPlot from "../boxPlot/BoxPlot";
 import PhoneChart from "../PhoneChart/PhoneChart";
-import SleepApp from "./sleepapp2.png"
+import SleepApp from "./sleepapp.png"
 import Dashboard from "./dashboard.png"
 
 const LeftVizPage = ({value,progress}) => {
