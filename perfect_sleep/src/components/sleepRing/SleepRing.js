@@ -20,23 +20,52 @@ const SleepRing = () => {
     const [jsonData, setJsonData] = useState(null);
     const [checked, setChecked] = useState(true);
     const [dateRange, setDateRange] = useState(7);
-    var selectedIdx = null;
+    const [hoverDateIdx, setHoverDateIdx] = useState(null);
+    const [curDateIdx, setCurDateIdx] = useState(null);
+    const [selectedIdx, setSelectedIdx] = useState(null);
     const width=600;
     const height=500;
 
     const handleChange = (event) => {
         setDateRange(event.target.value);
-        selectedIdx = null;
-        sessionStorage.removeItem("curDateIdx");
-        window.dispatchEvent(new Event('storage'));
+        setSelectedIdx(null);
+        setCurDateIdx(null);
     };
 
     const handleCheckChange = (event) => {
         setChecked(event.target.checked);
-        selectedIdx = null;
-        sessionStorage.removeItem("curDateIdx");
-        window.dispatchEvent(new Event('storage'));
+        setSelectedIdx(null);
+        setCurDateIdx(null);
     };
+
+    const handleHoverDate = (idx) => {
+        if (curDateIdx) {
+            if (idx === null) {
+                setHoverDateIdx(null);
+                return;
+            }
+            var len=8;
+            var diff = len - idx - 1;
+            var dataIdx = curDateIdx - jsonData.length - 3 + dateRange;
+            setHoverDateIdx(dataIdx - diff);
+        } else {
+            setHoverDateIdx(null);
+        }
+    };
+
+    const handleClick = (idx) => {
+        if (curDateIdx) {
+            if (idx === null) {
+                return;
+            }
+            var len=8;
+            var diff = len - idx - 1;
+            var dataIdx = curDateIdx - jsonData.length - 3 + dateRange;
+            setSelectedIdx(dataIdx - diff); 
+            setCurDateIdx(curDateIdx - diff);
+            setHoverDateIdx(null);
+        }
+    }
 
     const fetchData = async () => {
         // Please note the path to the data file is 'perfect_sleep/public/data/Apple_Watch_Sleep.json'
@@ -135,7 +164,7 @@ const SleepRing = () => {
 
             var preEndAngle = null;
             var preValue = null;
-
+            
             oneDay.forEach(record => {
                 var startAngle = angleScale(record.starttime);
                 var endAngle = angleScale(record.endtime);
@@ -144,6 +173,7 @@ const SleepRing = () => {
                     endAngle += 2 * Math.PI;
                 }
 
+                // Fill the gap between two sleep status
                 if (preEndAngle !== null) {
                     preEndAngle -= 0.01;
                     var tmpStart = startAngle+0.01;
@@ -163,13 +193,11 @@ const SleepRing = () => {
                         .on("click", function() {
                             if (selectedIdx === i) {
                                 svg.selectAll('.highlightRing').remove();// remove the highlight effect
-                                selectedIdx = null;
-                                sessionStorage.removeItem("curDateIdx");
-                                window.dispatchEvent(new Event('storage'));
+                                setSelectedIdx(null);
+                                setCurDateIdx(null);
                             } else {
-                                sessionStorage.setItem("curDateIdx", i+jsonData.length-dateRange+3);// My data missing 3 days sleep data
-                                window.dispatchEvent(new Event('storage'));
-                                selectedIdx = i;
+                                setSelectedIdx(i);
+                                setCurDateIdx(i+jsonData.length-dateRange+3);// In my data, we miss 3 days' data
                                 // highlight effect
                                 svg.selectAll('.highlightRing').remove();
                                 svg.append('path')
@@ -184,7 +212,8 @@ const SleepRing = () => {
                 }
                 preEndAngle = endAngle;
                 preValue = record.value;
-
+                
+                // draw the sleep status
                 const arc = d3.arc()
                     .innerRadius(innerRadius)
                     .outerRadius(outerRadius)
@@ -198,13 +227,11 @@ const SleepRing = () => {
                     .on("click", function() {
                         if (selectedIdx === i) {
                             svg.selectAll('.highlightRing').remove();// remove the highlight effect
-                            selectedIdx = null;
-                            sessionStorage.removeItem("curDateIdx");
-                            window.dispatchEvent(new Event('storage'));
+                            setSelectedIdx(null);
+                            setCurDateIdx(null);
                         } else {
-                            sessionStorage.setItem("curDateIdx", i+jsonData.length-dateRange+3);
-                            window.dispatchEvent(new Event('storage'));
-                            selectedIdx = i;
+                            setSelectedIdx(i);
+                            setCurDateIdx(i+jsonData.length-dateRange+3);
                             // highlight effect
                             svg.selectAll('.highlightRing').remove();
                             svg.append('path')
@@ -216,29 +243,38 @@ const SleepRing = () => {
                                 .attr('transform', `translate(${width / 2}, ${height / 2})`);
                         }                        
                     });
-                })
-            // if (!checked) {
-            //     var firstStartTime = oneDay[0].starttime;
-            //     var lastEndTime = oneDay[oneDay.length-1].endtime;
-            //     var startAngle = angleScale(lastEndTime);
-            //     var endAngle = angleScale(firstStartTime);
+                });
+            
+            // redraw the selected ring if useEffect is triggered
+            if (selectedIdx === i) {
+                svg.selectAll('.highlightRing').remove();
+                svg.append('path')
+                    .attr("class", "highlightRing")
+                    .attr('d', entireArc)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#003566')
+                    .attr('stroke-width', 3)
+                    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+            }
 
-            //     if (startAngle > endAngle) {
-            //         endAngle += 2 * Math.PI;
-            //     }
-
-            //     const arc = d3.arc()
-            //         .innerRadius(radius-ratio + i*ratio)
-            //         .outerRadius(radius + i*ratio)
-            //         .startAngle(startAngle)
-            //         .endAngle(endAngle);
-            //     svg.append('path')
-            //         .attr('d', arc)
-            //         .attr('fill', '#fdae61')
-            //         .attr('transform', `translate(${width / 2}, ${height / 2})`);
-            // }
+            // highlight the hovered date
+            if (hoverDateIdx === i) {
+                var r = (hoverDateIdx === selectedIdx) ? 5 : 3;
+                svg.selectAll('.hoverRing').remove();
+                svg.append('path')
+                    .attr("class", "hoverRing")
+                    .attr('d', entireArc)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#003566')
+                    .attr('stroke-width', r)
+                    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+            }
         });
         
+        // Important: make sure the hoverRing is on the top
+        svg.selectAll(".highlightRing").raise();
+        svg.selectAll(".hoverRing").raise();
+
         const indexMap = {0:0, 1:6, 2:12, 3:18};
         const twentySacle = d3.scaleLinear()
             .domain([0, 24])    
@@ -279,7 +315,7 @@ const SleepRing = () => {
         svg.selectAll('g').remove();
 
         var colorDomain = ['Awake',
-            'Light', 'REM','Deep'];
+            'REM', 'Light','Deep'];
         var colorScale = d3.scaleOrdinal()
             .domain(colorDomain)
             .range(["#d7191c","#abd9e9","#72aae9","#5874e9"]);
@@ -365,7 +401,7 @@ const SleepRing = () => {
             drawRings();
             colorLegend();
         }
-    }, [jsonData, dateRange, checked]);
+    }, [jsonData, dateRange, checked, hoverDateIdx, selectedIdx]);
 
     return (
         <div className='dashboardContainer'>
@@ -406,7 +442,7 @@ const SleepRing = () => {
                     </div>
                     <svg className="sleepRingSvg" ref={svgRef} width={width} height={height}></svg>
                 </div>
-                <LineChart />
+                <LineChart onMouseOver={handleHoverDate} onClick={handleClick} curDateIdx={curDateIdx}/>
             </div>
         </div>
     );

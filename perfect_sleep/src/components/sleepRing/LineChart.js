@@ -3,12 +3,12 @@ import * as d3 from "d3";
 import { timeFormat } from "d3";
 import './LineChart.css';
 
-const LineChart = () => {
+const LineChart = (props) => {
     const svgRef = useRef();
     const svgRefHeatmap = useRef();
     const svgLegendRef = useRef();
     const [jsonData, setJsonData] = useState(null);
-    const [curDateIdx, setCurDateIdx] = useState(null);
+    // const [curDateIdx, setCurDateIdx] = useState(null);
     const width = 690;
     const height = 350;
     const margin = {top: 20, right: 80, bottom: 50, left: 140};
@@ -40,6 +40,7 @@ const LineChart = () => {
     const drawLineChart = () => {
         if (!jsonData) return;
         
+        var curDateIdx = props.curDateIdx;
         const svg = d3.select(svgRef.current);
         const curDate = curDateIdx ? parseDate(jsonData[curDateIdx].date) : null;
         var data = null; // deep copy
@@ -99,6 +100,7 @@ const LineChart = () => {
             .attr("fill", "white")
             .text("Stress Level");
 
+        // draw line
         const t = svg.transition()
             .duration(750);
 
@@ -124,7 +126,8 @@ const LineChart = () => {
             .duration(0)
             .attr("d", null) 
             .remove(); 
-    
+        
+        // draw circles
         svg.selectAll(".myCircles")
             .data(data, d=>d.date)
             .join(
@@ -152,13 +155,27 @@ const LineChart = () => {
                 exit => exit
                   .call(exit => exit.transition(t)
                     .remove())
-            );
+            )
+            .on("click", function(event, d) {
+                var index = data.indexOf(d);
+                props.onClick(index); // pass the date to
+            })
+            .on("mouseover", function(event, d) {
+                var index = data.indexOf(d);
+                d3.select(this).attr("r", 8);
+                props.onMouseOver(index); // pass the date to the parent component
+            })
+            .on("mouseout", function(event, d) {
+                d3.select(this).attr("r", 5);
+                props.onMouseOver(null); // pass null to the parent component
+            });
 
         // bring the circles to the front
         svg.selectAll(".myCircles").raise();
     }
 
     const drawHeatMap = () => {
+        var curDateIdx = props.curDateIdx;
         const svg = d3.select(svgRefHeatmap.current);
         const curDate = curDateIdx ? parseDate(jsonData[curDateIdx].date) : null;
         var data=null;
@@ -230,6 +247,7 @@ const LineChart = () => {
                         .attr("height", bandwidth)
                     .call(update => update.transition(t)    
                         .attr("x", d => x(parseDate(d.date))-bandwidth/2)
+                        .attr("opacity", 1)
                     ),
                 exit => exit
                     .call(exit => exit.transition(t)
@@ -257,6 +275,7 @@ const LineChart = () => {
                         .attr("height", bandwidth)
                     .call(update => update.transition(t)
                         .attr("x", d => x(parseDate(d.date))-bandwidth/2)
+                        .attr("opacity", 1)
                     ),
                 exit => exit
                     .call(exit => exit.transition(t)
@@ -291,33 +310,19 @@ const LineChart = () => {
         }
     }
 
-    const handleStorageChange = () => {
-        var idx = sessionStorage.getItem("curDateIdx");
-        if (idx) {
-            setCurDateIdx(parseInt(idx));
-            sessionStorage.removeItem("curDateIdx");
-        } else  {
-            setCurDateIdx(null);
-        }
-    };
-
     useEffect(() => {
         fetchData();
-
-        window.addEventListener('storage', handleStorageChange);
-
-        return () => {
-            window.removeEventListener('storage', handleStorageChange);
-        }
     }, []);
 
+
     useEffect(() => {
+        console.log("LineChart: curDateIdx: ", props.curDateIdx);
         if (jsonData) {
             drawLineChart();
             drawHeatMap();
             // drawLegend();
         }
-    }, [jsonData, curDateIdx]);
+    }, [jsonData, props.curDateIdx]);
 
     return (
         <div className="lineChartContainer">

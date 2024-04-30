@@ -13,6 +13,7 @@ import SnapScroll from './components/scrollama/SnapScroll.js';
 import StressScatterPlotChart from './components/stressScatterPlotChart/StressScatterPlotChart.js';
 import PhoneChart from './components/PhoneChart/PhoneChart.js';
 import Introduction from './components/Introduction/Introduction.js'
+import Comparison from './components/comparison/Comparison.js';
 
 function App() {
   useEffect(() => {
@@ -38,7 +39,7 @@ function App() {
       {/* // Working*/}
       {/* <StickyScrollama /> */}
       <SleepRing />
-      
+      <Comparison />
 
       {/* // Conclusion */}
     </div>

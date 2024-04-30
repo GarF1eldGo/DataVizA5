@@ -38,7 +38,7 @@ const Comparison = () => {
       const isWorkday = (tmpStr) => {
         var date = new Date(tmpStr);
         var day = date.getDay();
-        console.log(day, date);
+        // console.log(day, date);
         if (day === 6 || day === 5) {// Used sleep at Friday or Saturday (Because next day is weekend)
             return false;
         } else {
