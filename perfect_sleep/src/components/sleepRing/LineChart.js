@@ -316,7 +316,6 @@ const LineChart = (props) => {
 
 
     useEffect(() => {
-        console.log("LineChart: curDateIdx: ", props.curDateIdx);
         if (jsonData) {
             drawLineChart();
             drawHeatMap();

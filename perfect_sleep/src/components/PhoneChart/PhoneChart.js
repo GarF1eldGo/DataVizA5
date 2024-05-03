@@ -80,7 +80,7 @@ const PhoneChart = () => {
         d => d.PhoneReach // Group by "PhoneReach" categories
     );
 
-    console.log("Aggregated Data: ", aggregatedData1);
+    // console.log("Aggregated Data: ", aggregatedData1);
 
     const x = d3.scaleBand()
         .domain(['Yes', 'No'])
