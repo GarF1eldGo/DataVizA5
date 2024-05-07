@@ -10,11 +10,13 @@
 
 .documentation .section {
     width: 60%;
+    font-size: 1.5rem;
 }
 
 .documentation .title {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
+    text-decoration: underline;
     margin: auto;
 }

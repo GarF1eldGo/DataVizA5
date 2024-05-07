@@ -208,10 +208,12 @@ const Comparison = () => {
                 <svg ref={svgRef2} width={width} height={height}></svg>
             </div>
             <div className="comparisonDescription">
-            On the left, it’s Chengke's sleep data in the last 7 days.<br/> on the right, it’s another user’s Apple Watch <a href="https://www.kaggle.com/datasets/aeryss/apple-health-sleep-stages-and-heart-rate/data?select=__notebook_source__.ipynb">sleep data</a> found in Kaggle.<br/><br/>
-            From the left ring, it's easy to find that Chengke has difficulty in sleeping, which is reflected in more awake periods and more sporadic wake up times. <br/>
-            On the right ring, this user’s sleep schedule is consistent, with short awake periods.
-
+                <div className = "comparisonTitle">
+                    Sleep Ring Comparison
+                </div>
+            Here is a comparison of two sleep rings generated from two user's Apple Watch sleep data. The left sleep ring displays Chengke's sleep data over the last 7 days. The right sleep ring displays an anonymous user's Apple Watch <a href="https://www.kaggle.com/datasets/aeryss/apple-health-sleep-stages-and-heart-rate/data?select=__notebook_source__.ipynb">sleep data</a> found in Kaggle.<br/><br/>
+            We can see that Chengke has a lot more difficulty in sleeping, which is reflected in more red awake periods and fairly sporadic wake up times.
+            On the other hand, the Kaggle user has fairly good sleep, with a consistent sleep schedule, shorter awake periods, and more REM sleep.
             </div>
         </div>
     );

@@ -315,7 +315,7 @@ const SleepRing = () => {
         svg.selectAll('g').remove();
 
         var colorDomain = ['Awake',
-            'REM', 'Light','Deep'];
+            'Light', 'REM','Deep'];
         var colorScale = d3.scaleOrdinal()
             .domain(colorDomain)
             .range(["#d7191c","#abd9e9","#72aae9","#5874e9"]);

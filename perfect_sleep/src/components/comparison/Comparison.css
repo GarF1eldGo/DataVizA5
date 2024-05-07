@@ -13,6 +13,14 @@
     align-items: center;
 }
 
+.comparisonTitle {
+    font-size: 34px; 
+    color: #abd9e9;
+    margin-bottom: 50px; 
+    font-weight: 700;
+  }
+  
+
 .comparisonContainer .comparisonDescription {
     flex-basis: 35%;
     font-size: 24px;
