@@ -205,7 +205,7 @@ const PhoneChart = () => {
   }, [data]);
 
     return (
-        <div>
+        <div className='phoneUsage'>
           <svg ref={svgRef1} width={1500} height={1000}/>
         </div>
     );

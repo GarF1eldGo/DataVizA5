@@ -14,6 +14,7 @@ import StressScatterPlotChart from './components/stressScatterPlotChart/StressSc
 import PhoneChart from './components/PhoneChart/PhoneChart.js';
 import Introduction from './components/Introduction/Introduction.js'
 import Comparison from './components/comparison/Comparison.js';
+import Documentation from './components/documentation/documentation.js';
 
 function App() {
   useEffect(() => {
@@ -42,6 +43,7 @@ function App() {
       <Comparison />
 
       {/* // Conclusion */}
+      <Documentation />
     </div>
   );
 }

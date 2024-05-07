@@ -203,8 +203,16 @@ const Comparison = () => {
 
     return (
         <div className="comparisonContainer">
-            <svg ref={svgRef} width={width} height={height}></svg>
-            <svg ref={svgRef2} width={width} height={height}></svg>
+            <div className="comparisonViz">
+                <svg ref={svgRef} width={width} height={height}></svg>
+                <svg ref={svgRef2} width={width} height={height}></svg>
+            </div>
+            <div className="comparisonDescription">
+            On the left, it’s Chengke's sleep data in the last 7 days.<br/> on the right, it’s another user’s Apple Watch <a href="https://www.kaggle.com/datasets/aeryss/apple-health-sleep-stages-and-heart-rate/data?select=__notebook_source__.ipynb">sleep data</a> found in Kaggle.<br/><br/>
+            From the left ring, it's easy to find that Chengke has difficulty in sleeping, which is reflected in more awake periods and more sporadic wake up times. <br/>
+            On the right ring, this user’s sleep schedule is consistent, with short awake periods.
+
+            </div>
         </div>
     );
 }

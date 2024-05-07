@@ -1,6 +1,23 @@
 .comparisonContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #131a41;
+}
+
+.comparisonViz {
+    flex-basis: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #131a41;
+}
+
+.comparisonContainer .comparisonDescription {
+    flex-basis: 35%;
+    font-size: 24px;
+}
+
+.comparisonContainer .comparisonDescription a {
+    color: #abd9e9;
 }
